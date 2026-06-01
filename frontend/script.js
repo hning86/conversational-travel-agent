@@ -46,7 +46,6 @@ let logPlaybackInterval = null;
 document.addEventListener("DOMContentLoaded", () => {
     setupTabListeners();
     setupChatListeners();
-    setupArchitectureOverlay();
     
     // Check backend connection status
     checkBackendHealth();
@@ -623,34 +622,4 @@ function escapeHtml(text) {
         .replace(/'/g, "&#039;");
 }
 
-// --- System Architecture Modal Controls ---
-function setupArchitectureOverlay() {
-    const systemArchBtn = document.getElementById("systemArchBtn");
-    const archModal = document.getElementById("archModal");
-    const closeArchBtn = document.getElementById("closeArchBtn");
-    
-    if (systemArchBtn && archModal && closeArchBtn) {
-        systemArchBtn.addEventListener("click", () => {
-            archModal.classList.remove("hidden");
-            // Trigger Mermaid render again if needed, though it renders automatically on first show
-        });
-        
-        closeArchBtn.addEventListener("click", () => {
-            archModal.classList.add("hidden");
-        });
-        
-        // Close modal on clicking outside the content box
-        archModal.addEventListener("click", (e) => {
-            if (e.target === archModal) {
-                archModal.classList.add("hidden");
-            }
-        });
-        
-        // Close on Escape keypress
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && !archModal.classList.contains("hidden")) {
-                archModal.classList.add("hidden");
-            }
-        });
-    }
-}
+

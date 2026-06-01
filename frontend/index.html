@@ -19,10 +19,7 @@
                     <span class="brand-divider">|</span>
                     <span class="brand-vision">2026 AI Vision Demo</span>
                 </div>
-                <div class="header-actions">
-                    <button id="systemArchBtn" class="btn-arch">System Architecture</button>
-                    <button id="resetDemoBtn" class="btn-reset">Reset Scenario</button>
-                </div>
+                <button id="resetDemoBtn" class="btn-reset">Reset Scenario</button>
             </div>
 
             <!-- LAURA'S PROFILE context -->
@@ -167,109 +164,6 @@
             </div>
         </main>
     </div>
-
-    <!-- SYSTEM ARCHITECTURE OVERLAY MODAL -->
-    <div id="archModal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>📐 Google Cloud & Agent Platform Architecture</h3>
-                <button id="closeArchBtn" class="btn-close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="mermaid-container">
-                    <div class="mermaid" id="mermaidDiagram">
-flowchart TD
-    User["User - Laura"]
-    
-    subgraph OrchGroup ["1. Orchestration & Session Context (Cloud Run)"]
-        Orch["Orchestrator - ADK 2.0 Core"]
-        BQ[("BigQuery - User Profiles")]
-        FS_DB[("Firestore - Session State")]
-        SM["Secret Manager - API Keys"]
-    end
-
-    subgraph SearchSub ["2. Hotels & Flights Booking Search"]
-        Hotels["Hotels Agent"]
-        Flights["Flights Agent"]
-        VS_DB[("Vertex AI Search - Hotel/Flight Vectors")]
-    end
-    
-    subgraph PolicySub ["3. RAG Pet Travel Policy Verification"]
-        Policy["Policy Agent - RAG"]
-        PolicyDocs["Brexit Pet Travel Policy - PDFs"]
-    end
-    
-    subgraph MappingSub ["4. Spatial Routing & Grounding"]
-        Mapping["Mapping Agent - Spatial Specialist"]
-        MapTool["Google Map Grounding Tool"]
-    end
-
-    %% Vertical stacking via hidden links (replacing ~~~)
-    VS_DB --- Policy
-    PolicyDocs --- Mapping
-    linkStyle 15,16 stroke:none
-
-    %% Turn Flow & Connections
-    User -->|1. romantic getaway / 2. pivot to London| Orch
-    User -->|3. Brexit pet entry rules inquiry| Orch
-    User -->|4. pedestrian walking distance| Orch
-    User -->|5. apply Genius discount & book| Orch
-    
-    %% Orch DB/Context flow
-    Orch -->|Reads context| BQ
-    Orch <-->|Saves/Restores state| FS_DB
-    Orch -->|Pulls credentials| SM
-
-    %% Orch Agent routing
-    Orch -->|Routes search| Hotels
-    Orch -->|Routes flights| Flights
-    Orch -->|Routes policy query| Policy
-    Orch -->|Routes spatial query| Mapping
-
-    %% Agent Tools connections
-    Hotels -->|Semantic lookup| VS_DB
-    Flights -->|Schedule lookup| VS_DB
-    Policy -->|Semantic search| PolicyDocs
-    Mapping -->|Pedestrian routing via Google Map Grounding| MapTool
-
-    %% Styling/Formatting
-    style Orch fill:#003580,stroke:#006cff,stroke-width:2px,color:#fff
-    style BQ fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
-    style FS_DB fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
-    style SM fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
-    
-    style Hotels fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
-    style Flights fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
-    style Policy fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
-    style Mapping fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
-    
-    style VS_DB fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
-    style PolicyDocs fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
-    style MapTool fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p>💡 Pro Tip: This architecture represents a production-grade Google ADK 2.0 multi-agent orchestration framework deployed on Cloud Run.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loaded Mermaid.js ESM for premium dynamic architecture rendering -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ 
-            startOnLoad: true,
-            theme: 'dark',
-            themeVariables: {
-                background: '#050814',
-                primaryColor: '#006cff',
-                primaryTextColor: '#fff',
-                lineColor: '#1e293b',
-                fontSize: '13px'
-            }
-        });
-    </script>
 
     <script src="script.js"></script>
 </body>
