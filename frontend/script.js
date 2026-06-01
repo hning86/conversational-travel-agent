@@ -22,7 +22,8 @@ const SCENARIO_PRESETS = {
     1: "I'm looking for a romantic weekend getaway driving from Amsterdam",
     2: "Actually, my sister in London just had a baby, so I want to go to London instead. No car, and I'll fly. Oh, and I'm bringing Buster (my Golden Retriever)!",
     3: "Wait, do I need any special passport or vaccine papers for Buster to enter the UK now that Brexit happened?",
-    4: "That's perfect. Let's book the flight and lock in the double standard room at the Hoxton!"
+    4: "How far is the Hoxton Shoreditch from my sister's place at 42 Rivington Street? Can Buster and I easily walk there?",
+    5: "That's perfect. Let's book the flight and lock in the double standard room at the Hoxton!"
 };
 
 // SVG element mapping
@@ -216,7 +217,7 @@ async function submitChatMessage(message) {
             updateTripHeader(result.turn);
             
             // Auto-advance to the next turn's speaker panel to guide the presenter!
-            if (result.turn < 4) {
+            if (result.turn < 5) {
                 setTimeout(() => {
                     setCurrentStep(result.turn + 1);
                 }, 1200); // Smooth delay for reading before unfolding the next turn card
@@ -441,6 +442,61 @@ function generateCardHtml(card) {
             `;
             break;
             
+        case "map_card":
+            cardDiv.className = "rich-map-card";
+            cardDiv.innerHTML = `
+                <div class="map-card-title">${card.title}</div>
+                <div class="map-card-subtitle">🗺️ ${card.origin} ➔ ${card.destination}</div>
+                <div class="map-card-details">
+                    <div class="map-bullet">🚶‍♂️ <strong>Distance:</strong> ${card.distance} (${card.duration})</div>
+                    <div class="map-bullet">${card.dog_friendly}</div>
+                </div>
+                <!-- Dynamic Vector Map SVG -->
+                <svg viewBox="0 0 400 180" class="map-svg" style="width: 100%; border-radius: 12px; background: #0f172a; border: 1px solid rgba(255,255,255,0.1);">
+                    <defs>
+                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                        </pattern>
+                        <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    <rect width="100%" height="100%" fill="#0f172a" />
+                    <rect width="100%" height="100%" fill="url(#grid)" />
+                    
+                    <!-- City Street Blocks Mockups -->
+                    <rect x="10" y="10" width="110" height="40" rx="4" fill="#1e293b" opacity="0.8" />
+                    <rect x="140" y="10" width="110" height="40" rx="4" fill="#1e293b" opacity="0.8" />
+                    <rect x="270" y="10" width="120" height="40" rx="4" fill="#1e293b" opacity="0.8" />
+                    <rect x="10" y="110" width="160" height="60" rx="4" fill="#1e293b" opacity="0.8" />
+                    <rect x="190" y="110" width="200" height="60" rx="4" fill="#1e293b" opacity="0.8" />
+                    
+                    <!-- Street Names Labels -->
+                    <text x="60" y="140" fill="rgba(255,255,255,0.15)" font-size="9" font-family="Outfit" font-weight="500">GREAT EASTERN ST</text>
+                    <text x="200" y="98" fill="rgba(255,255,255,0.25)" font-size="9" font-family="Outfit" letter-spacing="1">RIVINGTON STREET</text>
+                    
+                    <!-- Playground Area -->
+                    <rect x="190" y="60" width="45" height="40" rx="4" fill="#064e3b" opacity="0.4" />
+                    <text x="212" y="84" text-anchor="middle" fill="#10b981" font-size="8" font-family="Outfit" font-weight="600">🌳 Playground</text>
+                    
+                    <!-- Walking Pathway Route Line -->
+                    <path d="M 60 75 L 340 75" stroke="#006CFF" stroke-width="4" stroke-dasharray="6,4" filter="url(#glow-blue)" />
+                    
+                    <!-- Hoxton Hotel Node -->
+                    <circle cx="60" cy="75" r="7" fill="#006CFF" />
+                    <circle cx="60" cy="75" r="3" fill="#ffffff" />
+                    <text x="60" y="59" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" font-family="Outfit">🏨 The Hoxton</text>
+                    
+                    <!-- Sister's Flat Node -->
+                    <circle cx="340" cy="75" r="7" fill="#ef4444" />
+                    <polygon points="340,71 336,77 344,77" fill="#ffffff" />
+                    <text x="340" y="59" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Outfit">🏠 Sister's Flat</text>
+                    <text x="340" y="104" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="Outfit">42 Rivington St</text>
+                </svg>
+            `;
+            break;
+            
         default:
             cardDiv.textContent = JSON.stringify(card);
     }
@@ -568,9 +624,10 @@ function updateTripHeader(turn) {
             break;
         case 2:
         case 3:
+        case 4:
             headerTripStatus.textContent = "Amsterdam -> London (Shoreditch) 🐶";
             break;
-        case 4:
+        case 5:
             headerTripStatus.textContent = "London (Confirmed) • June 12-14";
             headerTripStatus.style.backgroundColor = "var(--success-green)";
             break;

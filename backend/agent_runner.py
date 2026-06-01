@@ -31,14 +31,16 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
     query_lower = query.lower()
     detected_turn = 1
     
-    if "book" in query_lower or "hoxton" in query_lower or "lock in" in query_lower or "standard room" in query_lower:
+    if "book" in query_lower or "lock in" in query_lower or "standard room" in query_lower:
+        detected_turn = 5
+    elif "how far" in query_lower or "rivington" in query_lower or "walk" in query_lower or "distance" in query_lower:
         detected_turn = 4
     elif "passport" in query_lower or "brexit" in query_lower or "border" in query_lower or "ahc" in query_lower:
         detected_turn = 3
     elif "sister" in query_lower or "london" in query_lower or "retriever" in query_lower or "buster" in query_lower:
         detected_turn = 2
     else:
-        detected_turn = current_turn + 1 if current_turn < 4 else 1
+        detected_turn = current_turn + 1 if current_turn < 5 else 1
 
     collector.log("ADK 2.0", f"State transition analyzer matched user message. Session Turn detected: Turn {detected_turn}")
     
@@ -191,6 +193,39 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         ]
         
     elif detected_turn == 4:
+        collector.log("ADK 2.0", "Spatial query received. Routing request to Spatial Specialist to compute pedestrian route from The Hoxton to 42 Rivington St.")
+        
+        # Simulate Spatial calculation and log
+        collector.log("Spatial Specialist", "Invoking Vertex AI Search / local GIS mapping databases for Shoreditch walking paths...")
+        collector.log("Spatial Specialist", "Route computed successfully: 0.2 miles (approx 4 mins walk). 100% pedestrian sidewalks, passing Rivington Playground.")
+        
+        # Save state in Firestore
+        session_state["current_turn"] = 4
+        session_state["sister_address"] = "42 Rivington Street"
+        session_state["distance_to_sister"] = "0.2 miles"
+        session_state["walk_time"] = "4 minutes"
+        firestore.save_session(session_id, session_state)
+        
+        response_text = (
+            "Great news! The Hoxton, Shoreditch is extremely close to your sister's flat at 42 Rivington Street. "
+            "It's only a 0.2-mile walk, which takes about 4 minutes. The entire route is along flat, dog-friendly "
+            "pedestrian sidewalks, and you'll even pass the Rivington Street Playground on the way! "
+            "I've mapped it out for you below. Shall we go ahead and lock in your flight and hotel room?"
+        )
+        
+        cards = [
+            {
+                "type": "map_card",
+                "title": "Route to Sister's Flat",
+                "origin": "The Hoxton, Shoreditch",
+                "destination": "42 Rivington Street",
+                "distance": "0.2 miles",
+                "duration": "4 mins walk",
+                "dog_friendly": "🐾 100% pedestrian paths • passes Rivington Playground"
+            }
+        ]
+        
+    elif detected_turn == 5:
         collector.log("ADK 2.0", "Resuming transaction flow. Pulling secure booking credentials from Secret Manager.")
         api_key = secret_manager.get_secret("booking-api-key")
         
@@ -201,7 +236,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         saved = original_price - discounted_price
         
         # Firestore Update
-        session_state["current_turn"] = 4
+        session_state["current_turn"] = 5
         session_state["booking_completed"] = True
         firestore.save_session(session_id, session_state)
         
