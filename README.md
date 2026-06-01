@@ -23,14 +23,29 @@ graph TD
         direction TB
         Workflow[🧩 ADK 2.0 Workflow]
         Dot[🤖 Orchestrator: 'Dot' router_agent]
-        Hotels[🏨 Hotels Specialist hotels_agent]
-        Flights[✈️ Flights Specialist flights_agent]
-        Policy[📜 Policy Specialist policy_agent]
+        
+        subgraph Agents [Specialized Agents]
+            Hotels[🏨 Hotels Specialist hotels_agent]
+            Flights[✈️ Flights Specialist flights_agent]
+            Policy[📜 Policy Specialist policy_agent]
+        end
+        
+        subgraph Tools [Agentic Tools]
+            pref_tool[lookup_user_preferences]
+            hotel_tool[search_hotels]
+            flight_tool[search_flights]
+            policy_tool[lookup_travel_policy]
+        end
         
         Workflow --> Dot
         Dot -->|Routes Turn| Hotels
         Dot -->|Routes Turn| Flights
         Dot -->|Routes Turn| Policy
+        
+        Hotels -->|Calls| pref_tool
+        Hotels -->|Calls| hotel_tool
+        Flights -->|Calls| flight_tool
+        Policy -->|Calls| policy_tool
     end
     
     Runner <-->|Queries Agent State & Profiles| travel_agent
@@ -45,8 +60,13 @@ graph TD
     
     Runner -->|1. Pre-fetch profile 'user_laura'| BQ
     Runner <-->|2. Load/Save state| FS
-    Runner -->|3. Execute Semantic Queries| VS
     Runner -->|4. Secure credentials fetch| SM
+    
+    pref_tool -->|Queries Profile| BQ
+    hotel_tool -->|Queries Preferences| BQ
+    hotel_tool -->|Vector Scan| VS
+    flight_tool -->|Vector Scan| VS
+    policy_tool -->|Vector Scan| VS
     
     style travel_agent fill:#e8f0fe,stroke:#1a73e8,stroke-width:2px
     style Mock GCP System fill:#fef7e0,stroke:#f9ab00,stroke-width:2px
