@@ -193,23 +193,23 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         ]
         
     elif detected_turn == 4:
-        collector.log("ADK 2.0", "Spatial query received. Routing request to Spatial Specialist to compute pedestrian route from The Hoxton to 42 Rivington St.")
+        collector.log("ADK 2.0", "Spatial query received. Routing request to Spatial Specialist to compute pedestrian route from The Hoxton to 18 Hoxton Square.")
         
         # Simulate Spatial calculation and log
         collector.log("Spatial Specialist", "Invoking Vertex AI Search / local GIS mapping databases for Shoreditch walking paths...")
-        collector.log("Spatial Specialist", "Route computed successfully: 0.2 miles (approx 4 mins walk). 100% pedestrian sidewalks, passing Rivington Playground.")
+        collector.log("Spatial Specialist", "Route computed successfully: 0.7 miles (approx 14 mins walk). 100% pedestrian sidewalks, passing beautiful Hoxton Square.")
         
         # Save state in Firestore
         session_state["current_turn"] = 4
-        session_state["sister_address"] = "42 Rivington Street"
-        session_state["distance_to_sister"] = "0.2 miles"
-        session_state["walk_time"] = "4 minutes"
+        session_state["sister_address"] = "18 Hoxton Square"
+        session_state["distance_to_sister"] = "0.7 miles"
+        session_state["walk_time"] = "14 minutes"
         firestore.save_session(session_id, session_state)
         
         response_text = (
-            "Great news! The Hoxton, Shoreditch is extremely close to your sister's flat at 42 Rivington Street. "
-            "It's only a 0.2-mile walk, which takes about 4 minutes. The entire route is along flat, dog-friendly "
-            "pedestrian sidewalks, and you'll even pass the Rivington Street Playground on the way! "
+            "Great news! The Hoxton, Shoreditch is very close to your sister's place at 18 Hoxton Square. "
+            "It's a scenic 0.7-mile walk, which takes about 14 minutes. The entire route is along flat, dog-friendly "
+            "pedestrian sidewalks, and you'll walk right past the green Hoxton Square park—perfect for a stroll with Buster! "
             "I've mapped it out for you below. Shall we go ahead and lock in your flight and hotel room?"
         )
         
@@ -218,10 +218,10 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                 "type": "map_card",
                 "title": "Route to Sister's Flat",
                 "origin": "The Hoxton, Shoreditch",
-                "destination": "42 Rivington Street",
-                "distance": "0.2 miles",
-                "duration": "4 mins walk",
-                "dog_friendly": "🐾 100% pedestrian paths • passes Rivington Playground"
+                "destination": "18 Hoxton Square",
+                "distance": "0.7 miles",
+                "duration": "14 mins walk",
+                "dog_friendly": "🐾 100% pedestrian paths • passes Hoxton Square park"
             }
         ]
         
