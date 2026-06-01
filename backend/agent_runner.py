@@ -193,11 +193,11 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         ]
         
     elif detected_turn == 4:
-        collector.log("ADK 2.0", "Spatial query received. Routing request to Spatial Specialist to compute pedestrian route from The Hoxton to 18 Hoxton Square.")
+        collector.log("ADK 2.0", "Spatial query received. Routing request to Mapping Agent to compute pedestrian route from The Hoxton to 18 Hoxton Square.")
         
         # Simulate Spatial calculation and log
-        collector.log("Spatial Specialist", "Invoking Vertex AI Search / local GIS mapping databases for Shoreditch walking paths...")
-        collector.log("Spatial Specialist", "Route computed successfully: 0.7 miles (approx 14 mins walk). 100% pedestrian sidewalks, passing beautiful Hoxton Square.")
+        collector.log("Mapping Agent", "Invoking Google Map Grounding tool to retrieve real-time pedestrian walking paths and calculate precise travel times...")
+        collector.log("Mapping Agent", "Route computed successfully: 0.7 miles (approx 14 mins walk). 100% pedestrian sidewalks, passing Hoxton Square park.")
         
         # Save state in Firestore
         session_state["current_turn"] = 4
