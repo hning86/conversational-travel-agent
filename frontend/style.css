@@ -280,104 +280,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* GCP Architecture Monitor */
-.gcp-monitor {
-    background-color: rgba(30, 41, 59, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
-    padding: 14px;
-}
-
-.gcp-monitor h4 {
-    font-size: 0.8rem;
-    color: var(--slate-300);
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-}
-
-.architecture-canvas {
-    background-color: rgba(15, 23, 42, 0.8);
-    border-radius: 8px;
-    padding: 10px;
-    border: 1px solid rgba(255,255,255,0.04);
-}
-
-.arch-svg {
-    width: 100%;
-    height: auto;
-}
-
-/* SVG Active Node Styles */
-.node rect, .node cylinder {
-    fill: rgba(30, 41, 59, 0.8);
-    stroke: rgba(255, 255, 255, 0.2);
-    stroke-width: 1.5;
-    transition: var(--transition);
-}
-
-.node-db rect, .node-db cylinder {
-    fill: rgba(30, 41, 59, 0.8);
-    stroke: rgba(255, 255, 255, 0.15);
-    stroke-width: 1;
-    transition: var(--transition);
-}
-
-.node text, .node-db text {
-    fill: var(--slate-300);
-    font-family: var(--font-sans);
-    transition: var(--transition);
-}
-
-.node-label {
-    font-size: 11px;
-}
-
-.node-sublabel {
-    font-size: 9px;
-    fill: var(--slate-300);
-}
-
-.db-label {
-    font-size: 9px;
-}
-
-/* Active Highlight States on SVG */
-.node.active rect {
-    fill: rgba(0, 53, 128, 0.6);
-    stroke: var(--booking-blue-light);
-    stroke-width: 2;
-    filter: url(#glow);
-}
-
-.node.active text {
-    fill: white;
-}
-
-.node-db.active cylinder {
-    fill: rgba(255, 183, 0, 0.3);
-    stroke: var(--booking-yellow);
-    stroke-width: 1.5;
-    filter: url(#glow);
-}
-
-.node-db.active text {
-    fill: var(--booking-yellow);
-    font-weight: 600;
-}
-
-.arch-svg path.active {
-    stroke: var(--booking-blue-light);
-    stroke-width: 2.5;
-    stroke-dasharray: 6,4;
-    animation: dash 1s linear infinite;
-}
-
-@keyframes dash {
-    to {
-        stroke-dashoffset: -10;
-    }
-}
-
 /* Live Logs Terminal Pane */
 .live-logs {
     background-color: #05070f;
@@ -1360,28 +1262,30 @@ body {
     font-size: 16px; /* Globally scale base fonts to a perfectly balanced size */
 }
 
-/* Constrain cockpit to exactly 100vh and allow vertical scrolling */
+/* Constrain cockpit to exactly 100vh and prevent outer scrollbar, aligning padding */
 .presenter-cockpit {
     height: 100vh !important;
     max-height: 100vh !important;
-    overflow-y: auto !important;
+    overflow: hidden !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 20px !important;
+    padding: 15px 20px !important; /* 15px vertical padding matches companion pane */
+    box-sizing: border-box !important;
 }
 
-/* Custom scrollbar style for the presenter cockpit to make it extremely clear it's scrollable */
-.presenter-cockpit::-webkit-scrollbar {
-    width: 8px !important;
+/* Custom scrollbar style for the console logs to make it look extremely premium */
+.console-logs::-webkit-scrollbar {
+    width: 6px !important;
 }
-.presenter-cockpit::-webkit-scrollbar-track {
+.console-logs::-webkit-scrollbar-track {
     background: rgba(15, 23, 42, 0.5) !important;
 }
-.presenter-cockpit::-webkit-scrollbar-thumb {
+.console-logs::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15) !important;
-    border-radius: 4px !important;
+    border-radius: 3px !important;
 }
-.presenter-cockpit::-webkit-scrollbar-thumb:hover {
+.console-logs::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -1397,10 +1301,14 @@ body {
 */
 .cockpit-header,
 .profile-card,
-.talk-track,
-.gcp-monitor,
-.live-logs {
+.talk-track {
     flex-shrink: 0 !important;
+}
+
+.live-logs {
+    flex-grow: 1 !important;
+    flex-shrink: 1 !important;
+    min-height: 150px !important;
 }
 
 /* Talk track display block layout prevents inner accordion flex-shrink issues entirely */
@@ -1451,12 +1359,7 @@ body {
     color: var(--booking-yellow) !important;
 }
 
-/* Fix logs container height and stop it from expanding or squishing cards */
-.live-logs {
-    height: 280px !important;
-    min-height: 280px !important;
-    flex-grow: 0 !important;
-}
+
 
 /* Chat bubble text sizes - highly readable and elegant */
 .msg-bubble p {

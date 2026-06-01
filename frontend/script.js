@@ -26,25 +26,17 @@ const SCENARIO_PRESETS = {
     5: "That's perfect. Let's book the flight and lock in the double standard room at the Hoxton!"
 };
 
-// SVG element mapping
-const SVG_NODES = {
-    ui: document.getElementById("node-ui"),
-    orch: document.getElementById("node-orch"),
-    sub: document.getElementById("node-sub"),
-    bq: document.getElementById("node-bq"),
-    fs: document.getElementById("node-fs"),
-    vs: document.getElementById("node-vs"),
-    sm: document.getElementById("node-sm")
+// SVG element mapping (Monitor panel removed, stubbed safely to prevent errors)
+const dummyElement = {
+    classList: {
+        add: () => {},
+        remove: () => {},
+        toggle: () => {},
+        contains: () => false
+    }
 };
-
-const SVG_LINKS = {
-    ui_orch: document.getElementById("link-ui-orch"),
-    orch_sub: document.getElementById("link-orch-sub"),
-    orch_bq: document.getElementById("link-orch-bq"),
-    orch_fs: document.getElementById("link-orch-fs"),
-    sub_vs: document.getElementById("link-sub-vs"),
-    sub_sm: document.getElementById("link-sub-sm")
-};
+const SVG_NODES = new Proxy({}, { get: () => dummyElement });
+const SVG_LINKS = new Proxy({}, { get: () => dummyElement });
 
 // Global state
 let isTyping = false;
@@ -531,48 +523,15 @@ function appendLogLine(cssClass, text, payload = null) {
 }
 
 function lightSvgElementsForComponent(comp) {
-    const c = comp.toLowerCase();
-    
-    // Always keep active the main flow
-    SVG_NODES.ui.classList.add("active");
-    SVG_NODES.orch.classList.add("active");
-    SVG_LINKS.ui_orch.classList.add("active");
-    
-    if (c.includes("bigquery")) {
-        SVG_NODES.bq.classList.add("active");
-        SVG_LINKS.orch_bq.classList.add("active");
-    } else if (c.includes("firestore")) {
-        SVG_NODES.fs.classList.add("active");
-        SVG_LINKS.orch_fs.classList.add("active");
-    } else if (c.includes("search") || c.includes("vector")) {
-        SVG_NODES.sub.classList.add("active");
-        SVG_LINKS.orch_sub.classList.add("active");
-        SVG_NODES.vs.classList.add("active");
-        SVG_LINKS.sub_vs.classList.add("active");
-    } else if (c.includes("secret")) {
-        SVG_NODES.sub.classList.add("active");
-        SVG_LINKS.orch_sub.classList.add("active");
-        SVG_NODES.sm.classList.add("active");
-        SVG_LINKS.sub_sm.classList.add("active");
-    } else if (c.includes("agent")) { // Specialized Agents (Hotels, Flights, Policy)
-        SVG_NODES.sub.classList.add("active");
-        SVG_LINKS.orch_sub.classList.add("active");
-    }
+    // GCP Monitor removed
 }
 
 function resetSvgHighlights() {
-    Object.values(SVG_NODES).forEach(node => {
-        if (node) node.classList.remove("active");
-    });
-    Object.values(SVG_LINKS).forEach(link => {
-        if (link) link.classList.remove("active");
-    });
+    // GCP Monitor removed
 }
 
 function highlightSvgPath(node1, link, node2) {
-    if (SVG_NODES[node1]) SVG_NODES[node1].classList.add("active");
-    if (SVG_LINKS[link]) SVG_LINKS[link].classList.add("active");
-    if (SVG_NODES[node2]) SVG_NODES[node2].classList.add("active");
+    // GCP Monitor removed
 }
 
 // --- Header Trip Status Dynamic Updates ---
