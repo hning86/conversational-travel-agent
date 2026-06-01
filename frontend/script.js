@@ -451,49 +451,102 @@ function generateCardHtml(card) {
                     <div class="map-bullet">🚶‍♂️ <strong>Distance:</strong> ${card.distance} (${card.duration})</div>
                     <div class="map-bullet">${card.dog_friendly}</div>
                 </div>
-                <!-- Premium Realistic Vector Background Map SVG -->
-                <svg viewBox="0 0 400 180" class="map-svg" style="width: 100%; border-radius: 12px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1);">
+                <!-- Premium Google Maps Mockup SVG -->
+                <svg viewBox="0 0 400 200" class="map-svg" style="width: 100%; border-radius: 14px; background: #151618; border: 1px solid rgba(255,255,255,0.12); box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+                    <!-- LANDMASS -->
+                    <rect width="100%" height="100%" fill="#151618" />
+                    
+                    <!-- BUILDING FOOTPRINTS (Sleek urban geometries) -->
+                    <polygon points="10,15 120,15 120,50 10,50" fill="#222326" stroke="#2e3033" stroke-width="0.5" />
+                    <polygon points="10,60 70,60 70,110 10,110" fill="#222326" stroke="#2e3033" stroke-width="0.5" />
+                    <polygon points="295,15 390,15 390,85 295,85" fill="#222326" stroke="#2e3033" stroke-width="0.5" />
+                    <polygon points="10,155 140,155 140,190 10,190" fill="#222326" stroke="#2e3033" stroke-width="0.5" />
+                    <polygon points="190,135 390,135 390,190 190,190" fill="#222326" stroke="#2e3033" stroke-width="0.5" />
+                    
+                    <!-- PARKS & VEGETATION (Google Maps dark navigation style) -->
+                    <!-- Rivington Playground -->
+                    <rect x="135" y="15" width="85" height="60" rx="8" fill="#152c20" stroke="#2b5f43" stroke-width="1" />
+                    <!-- Tiny Trees/Bushes mockups inside park -->
+                    <circle cx="155" cy="35" r="3" fill="#34a853" opacity="0.7" />
+                    <circle cx="165" cy="45" r="4" fill="#34a853" opacity="0.7" />
+                    <circle cx="195" cy="30" r="3" fill="#34a853" opacity="0.7" />
+                    <circle cx="185" cy="55" r="5" fill="#34a853" opacity="0.7" />
+                    <text x="177" y="48" text-anchor="middle" fill="#a3e635" font-size="7" font-family="Outfit" font-weight="bold" opacity="0.9">Rivington Playground</text>
+                    
+                    <!-- STREET LAYOUT -->
                     <!-- Charlotte Road -->
-                    <path d="M 160 110 L 160 180" stroke="#1e293b" stroke-width="22" stroke-linecap="round" />
-                    <path d="M 160 110 L 160 180" stroke="#0f172a" stroke-width="18" stroke-linecap="round" />
+                    <path d="M 170 110 L 170 200" stroke="#3c4043" stroke-width="18" stroke-linecap="round" />
+                    <path d="M 170 110 L 170 200" stroke="#202124" stroke-width="14" stroke-linecap="round" />
                     
                     <!-- Garden Walk -->
-                    <path d="M 240 0 L 240 110" stroke="#1e293b" stroke-width="22" stroke-linecap="round" />
-                    <path d="M 240 0 L 240 110" stroke="#0f172a" stroke-width="18" stroke-linecap="round" />
+                    <path d="M 260 0 L 260 110" stroke="#3c4043" stroke-width="18" stroke-linecap="round" />
+                    <path d="M 260 0 L 260 110" stroke="#202124" stroke-width="14" stroke-linecap="round" />
                     
                     <!-- Great Eastern St -->
-                    <path d="M 40 180 L 90 0" stroke="#1e293b" stroke-width="26" stroke-linecap="round" />
-                    <path d="M 40 180 L 90 0" stroke="#0f172a" stroke-width="22" stroke-linecap="round" />
+                    <path d="M 20 200 L 110 0" stroke="#3c4043" stroke-width="28" stroke-linecap="round" />
+                    <path d="M 20 200 L 110 0" stroke="#202124" stroke-width="22" stroke-linecap="round" />
+                    <!-- Lane divider dashes for arterial Great Eastern St -->
+                    <path d="M 20 200 L 110 0" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4,6" />
                     
                     <!-- Rivington St -->
-                    <path d="M 70 110 L 400 110" stroke="#1e293b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M 70 110 L 400 110" stroke="#0f172a" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 70 110 L 400 110" stroke="#3c4043" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 70 110 L 400 110" stroke="#202124" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
                     
-                    <!-- Park / Playground Area -->
-                    <rect x="130" y="20" width="80" height="60" rx="8" fill="#022c22" stroke="#10b981" stroke-width="1" opacity="0.8" />
-                    <text x="170" y="52" text-anchor="middle" fill="#10b981" font-size="8.5" font-family="Outfit" font-weight="600">🌳 Rivington</text>
-                    <text x="170" y="64" text-anchor="middle" fill="#10b981" font-size="8.5" font-family="Outfit" font-weight="600">Playground</text>
+                    <!-- STREET NAME LABELS -->
+                    <text x="335" y="114" fill="rgba(255,255,255,0.35)" font-size="7.5" font-family="Outfit" font-weight="bold" letter-spacing="0.5">RIVINGTON ST</text>
+                    <text x="175" y="160" fill="rgba(255,255,255,0.25)" font-size="7" font-family="Outfit" transform="rotate(90, 175, 160)">CHARLOTTE RD</text>
+                    <text x="52" y="55" fill="rgba(255,255,255,0.25)" font-size="7.5" font-family="Outfit" transform="rotate(-64, 52, 55)">GREAT EASTERN ST</text>
+                    <text x="264" y="45" fill="rgba(255,255,255,0.2)" font-size="7" font-family="Outfit" transform="rotate(90, 264, 45)">GARDEN WALK</text>
                     
-                    <!-- Street Labels -->
-                    <text x="290" y="114" fill="rgba(255,255,255,0.35)" font-size="8" font-family="Outfit" font-weight="600" letter-spacing="0.5">RIVINGTON ST</text>
-                    <text x="50" y="50" fill="rgba(255,255,255,0.2)" font-size="8" font-family="Outfit" font-weight="600" transform="rotate(-74, 50, 50)">GREAT EASTERN ST</text>
-                    <text x="244" y="45" fill="rgba(255,255,255,0.2)" font-size="7.5" font-family="Outfit" font-weight="600" transform="rotate(90, 244, 45)">GARDEN WALK</text>
+                    <!-- PEDESTRIAN WALKING ROUTE (Google Maps cobalt blue navigation style) -->
+                    <!-- Blue casing glow -->
+                    <path d="M 60 140 L 73 110 L 320 110" stroke="#1a73e8" stroke-width="7" opacity="0.3" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Vibrant Blue Core line -->
+                    <path d="M 60 140 L 73 110 L 320 110" stroke="#4285f4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Walking footprint dots -->
+                    <path d="M 60 140 L 73 110 L 320 110" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2,8" stroke-linecap="round" stroke-linejoin="round" />
                     
-                    <!-- Pedestrian Walking Route Line (Double Path technique for glow & core) -->
-                    <path d="M 65 130 L 78 110 L 320 110" stroke="#006CFF" stroke-width="8" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M 65 130 L 78 110 L 320 110" stroke="#60a5fa" stroke-width="3.5" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- GOOGLE MAPS TEARDROP PIN 1: The Hoxton (Hotel Category Blue) -->
+                    <circle cx="60" cy="140" r="12" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.4" />
+                    <!-- Shadow -->
+                    <ellipse cx="60" cy="140" rx="4" ry="1.5" fill="rgba(0,0,0,0.5)" />
+                    <!-- Teardrop Path -->
+                    <path d="M 60 140 C 56 136 50 129 50 123 C 50 117 54.5 112 60 112 C 65.5 112 70 117 70 123 C 70 129 64 136 60 140 Z" fill="#1a73e8" stroke="#ffffff" stroke-width="1" />
+                    <!-- Bed Icon -->
+                    <circle cx="60" cy="123" r="4" fill="#1a73e8" />
+                    <text x="60" y="126" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="bold">🛏️</text>
+                    <!-- Label card -->
+                    <rect x="20" y="94" width="80" height="14" rx="3" fill="#1a73e8" />
+                    <text x="60" y="104" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="bold" font-family="Outfit">The Hoxton, Shoreditch</text>
                     
-                    <!-- Starting Point Node: The Hoxton -->
-                    <circle cx="65" cy="130" r="7" fill="#006CFF" />
-                    <circle cx="65" cy="130" r="3" fill="#ffffff" />
-                    <circle cx="65" cy="130" r="11" fill="none" stroke="#006CFF" stroke-width="1.5" opacity="0.5" />
-                    <text x="65" y="148" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700" font-family="Outfit">🏨 The Hoxton</text>
+                    <!-- GOOGLE MAPS TEARDROP PIN 2: Sister's Flat (Home Category Red) -->
+                    <circle cx="320" cy="110" r="12" fill="none" stroke="#ea4335" stroke-width="1.5" opacity="0.4" />
+                    <!-- Shadow -->
+                    <ellipse cx="320" cy="110" rx="4" ry="1.5" fill="rgba(0,0,0,0.5)" />
+                    <!-- Teardrop Path -->
+                    <path d="M 320 110 C 316 106 310 99 310 93 C 310 87 314.5 82 320 82 C 325.5 82 330 87 330 93 C 330 99 324 106 320 110 Z" fill="#ea4335" stroke="#ffffff" stroke-width="1" />
+                    <!-- Home Icon -->
+                    <circle cx="320" cy="93" r="4" fill="#ea4335" />
+                    <text x="320" y="96" text-anchor="middle" fill="#ffffff" font-size="7" font-weight="bold">🏠</text>
+                    <!-- Label card -->
+                    <rect x="285" y="64" width="70" height="14" rx="3" fill="#ea4335" />
+                    <text x="320" y="74" text-anchor="middle" fill="#ffffff" font-size="8.5" font-weight="bold" font-family="Outfit">Sister's Flat</text>
                     
-                    <!-- Destination Node: Sister's Flat -->
-                    <circle cx="320" cy="110" r="7" fill="#ef4444" />
-                    <polygon points="320,106 316,112 324,112" fill="#ffffff" />
-                    <circle cx="320" cy="110" r="11" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5" />
-                    <text x="320" y="94" text-anchor="middle" fill="#ef4444" font-size="10.5" font-weight="700" font-family="Outfit">🏠 Sister's Flat</text>
+                    <!-- FLOATING SEARCH CARD (Google Maps Trademark UI) -->
+                    <rect x="15" y="15" width="110" height="26" rx="6" fill="#202124" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
+                    <text x="24" y="31" fill="rgba(255,255,255,0.6)" font-size="8" font-family="Outfit">🔍 Search Google Maps</text>
+                    <!-- Floating blue direction button -->
+                    <circle cx="112" cy="28" r="8" fill="#1a73e8" />
+                    <text x="112" y="31" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold">➔</text>
+                    
+                    <!-- FLOATING ZOOM CONTROLS -->
+                    <rect x="365" y="130" width="20" height="40" rx="4" fill="#202124" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
+                    <line x1="365" y1="150" x2="385" y2="150" stroke="rgba(255,255,255,0.18)" stroke-width="1" />
+                    <text x="375" y="142" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-weight="bold">+</text>
+                    <text x="375" y="162" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-weight="bold">-</text>
+                    
+                    <!-- GOOGLE WATERMARK LOGO -->
+                    <text x="16" y="188" fill="rgba(255,255,255,0.35)" font-size="10.5" font-family="Times New Roman" font-weight="bold" font-style="italic" letter-spacing="0.5">Google</text>
                 </svg>
             `;
             break;
