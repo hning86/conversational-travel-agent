@@ -74,3 +74,6 @@ session_state.json
 .project
 .pydevproject
 .settings/
+
+# ADK
+.adk/
