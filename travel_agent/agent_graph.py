@@ -4,7 +4,7 @@ from google.adk import Agent, Workflow
 
 router_agent = Agent(
     name="router_orchestrator",
-    model="gemini-2.5-flash",
+    model="gemini-3.1-flash-lite",
     instruction="""
     You are 'Dot', the premier Booking.com conversational companion.
     Your role is to orchestrate the travel planning experience for travelers.
@@ -15,7 +15,7 @@ router_agent = Agent(
 
 hotels_agent = Agent(
     name="hotels_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3.1-flash-lite",
     instruction="""
     You are the Booking.com Hotels Specialist. 
     You leverage Vertex AI Vector Search to find accommodations that match subtle customer requests (e.g. large pets, ground floor access, art interests).
@@ -25,7 +25,7 @@ hotels_agent = Agent(
 
 flights_agent = Agent(
     name="flights_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3.1-flash-lite",
     instruction="""
     You are the Booking.com Flights Specialist.
     Your job is to find flights that align with the user's preferred times, airlines (like KLM), and home airport constraints.
@@ -34,7 +34,7 @@ flights_agent = Agent(
 
 policy_agent = Agent(
     name="policy_agent",
-    model="gemini-2.5-flash",
+    model="gemini-3.1-flash-lite",
     instruction="""
     You are the Travel Policy Advisor.
     You query official policy indexes to answer travel compliance questions (such as Brexit animal health guidelines or visa regulations).
