@@ -451,48 +451,49 @@ function generateCardHtml(card) {
                     <div class="map-bullet">🚶‍♂️ <strong>Distance:</strong> ${card.distance} (${card.duration})</div>
                     <div class="map-bullet">${card.dog_friendly}</div>
                 </div>
-                <!-- Dynamic Vector Map SVG -->
-                <svg viewBox="0 0 400 180" class="map-svg" style="width: 100%; border-radius: 12px; background: #0f172a; border: 1px solid rgba(255,255,255,0.1);">
-                    <defs>
-                        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1" />
-                        </pattern>
-                        <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                        </filter>
-                    </defs>
-                    <rect width="100%" height="100%" fill="#0f172a" />
-                    <rect width="100%" height="100%" fill="url(#grid)" />
+                <!-- Premium Realistic Vector Background Map SVG -->
+                <svg viewBox="0 0 400 180" class="map-svg" style="width: 100%; border-radius: 12px; background: #0b0f19; border: 1px solid rgba(255,255,255,0.1);">
+                    <!-- Charlotte Road -->
+                    <path d="M 160 110 L 160 180" stroke="#1e293b" stroke-width="22" stroke-linecap="round" />
+                    <path d="M 160 110 L 160 180" stroke="#0f172a" stroke-width="18" stroke-linecap="round" />
                     
-                    <!-- City Street Blocks Mockups -->
-                    <rect x="10" y="10" width="110" height="40" rx="4" fill="#1e293b" opacity="0.8" />
-                    <rect x="140" y="10" width="110" height="40" rx="4" fill="#1e293b" opacity="0.8" />
-                    <rect x="270" y="10" width="120" height="40" rx="4" fill="#1e293b" opacity="0.8" />
-                    <rect x="10" y="110" width="160" height="60" rx="4" fill="#1e293b" opacity="0.8" />
-                    <rect x="190" y="110" width="200" height="60" rx="4" fill="#1e293b" opacity="0.8" />
+                    <!-- Garden Walk -->
+                    <path d="M 240 0 L 240 110" stroke="#1e293b" stroke-width="22" stroke-linecap="round" />
+                    <path d="M 240 0 L 240 110" stroke="#0f172a" stroke-width="18" stroke-linecap="round" />
                     
-                    <!-- Street Names Labels -->
-                    <text x="60" y="140" fill="rgba(255,255,255,0.15)" font-size="9" font-family="Outfit" font-weight="500">GREAT EASTERN ST</text>
-                    <text x="200" y="98" fill="rgba(255,255,255,0.25)" font-size="9" font-family="Outfit" letter-spacing="1">RIVINGTON STREET</text>
+                    <!-- Great Eastern St -->
+                    <path d="M 40 180 L 90 0" stroke="#1e293b" stroke-width="26" stroke-linecap="round" />
+                    <path d="M 40 180 L 90 0" stroke="#0f172a" stroke-width="22" stroke-linecap="round" />
                     
-                    <!-- Playground Area -->
-                    <rect x="190" y="60" width="45" height="40" rx="4" fill="#064e3b" opacity="0.4" />
-                    <text x="212" y="84" text-anchor="middle" fill="#10b981" font-size="8" font-family="Outfit" font-weight="600">🌳 Playground</text>
+                    <!-- Rivington St -->
+                    <path d="M 70 110 L 400 110" stroke="#1e293b" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 70 110 L 400 110" stroke="#0f172a" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
                     
-                    <!-- Walking Pathway Route Line -->
-                    <path d="M 60 75 L 340 75" stroke="#006CFF" stroke-width="4" stroke-dasharray="6,4" filter="url(#glow-blue)" />
+                    <!-- Park / Playground Area -->
+                    <rect x="130" y="20" width="80" height="60" rx="8" fill="#022c22" stroke="#10b981" stroke-width="1" opacity="0.8" />
+                    <text x="170" y="52" text-anchor="middle" fill="#10b981" font-size="8.5" font-family="Outfit" font-weight="600">🌳 Rivington</text>
+                    <text x="170" y="64" text-anchor="middle" fill="#10b981" font-size="8.5" font-family="Outfit" font-weight="600">Playground</text>
                     
-                    <!-- Hoxton Hotel Node -->
-                    <circle cx="60" cy="75" r="7" fill="#006CFF" />
-                    <circle cx="60" cy="75" r="3" fill="#ffffff" />
-                    <text x="60" y="59" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700" font-family="Outfit">🏨 The Hoxton</text>
+                    <!-- Street Labels -->
+                    <text x="290" y="114" fill="rgba(255,255,255,0.35)" font-size="8" font-family="Outfit" font-weight="600" letter-spacing="0.5">RIVINGTON ST</text>
+                    <text x="50" y="50" fill="rgba(255,255,255,0.2)" font-size="8" font-family="Outfit" font-weight="600" transform="rotate(-74, 50, 50)">GREAT EASTERN ST</text>
+                    <text x="244" y="45" fill="rgba(255,255,255,0.2)" font-size="7.5" font-family="Outfit" font-weight="600" transform="rotate(90, 244, 45)">GARDEN WALK</text>
                     
-                    <!-- Sister's Flat Node -->
-                    <circle cx="340" cy="75" r="7" fill="#ef4444" />
-                    <polygon points="340,71 336,77 344,77" fill="#ffffff" />
-                    <text x="340" y="59" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Outfit">🏠 Sister's Flat</text>
-                    <text x="340" y="104" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="8.5" font-family="Outfit">42 Rivington St</text>
+                    <!-- Pedestrian Walking Route Line (Double Path technique for glow & core) -->
+                    <path d="M 65 130 L 78 110 L 320 110" stroke="#006CFF" stroke-width="8" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 65 130 L 78 110 L 320 110" stroke="#60a5fa" stroke-width="3.5" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round" />
+                    
+                    <!-- Starting Point Node: The Hoxton -->
+                    <circle cx="65" cy="130" r="7" fill="#006CFF" />
+                    <circle cx="65" cy="130" r="3" fill="#ffffff" />
+                    <circle cx="65" cy="130" r="11" fill="none" stroke="#006CFF" stroke-width="1.5" opacity="0.5" />
+                    <text x="65" y="148" text-anchor="middle" fill="#ffffff" font-size="10.5" font-weight="700" font-family="Outfit">🏨 The Hoxton</text>
+                    
+                    <!-- Destination Node: Sister's Flat -->
+                    <circle cx="320" cy="110" r="7" fill="#ef4444" />
+                    <polygon points="320,106 316,112 324,112" fill="#ffffff" />
+                    <circle cx="320" cy="110" r="11" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5" />
+                    <text x="320" y="94" text-anchor="middle" fill="#ef4444" font-size="10.5" font-weight="700" font-family="Outfit">🏠 Sister's Flat</text>
                 </svg>
             `;
             break;
