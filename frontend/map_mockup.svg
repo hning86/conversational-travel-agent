@@ -1,23 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="map-svg" style="width: 100%; border-radius: 14px; background: #f8f9fa; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="map-svg" style="width: 100%; border-radius: 14px; background: #f1f3f4; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
     <style>
         text {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
         }
     </style>
-    <!-- LANDMASS (Google Maps Ultra-Light Grey/Off-White) -->
-    <rect width="100%" height="100%" fill="#f8f9fa" />
+    <!-- LANDMASS (Google Maps Premium Light Landmass) -->
+    <rect width="100%" height="100%" fill="#f1f3f4" />
     
-    <!-- BUILDING FOOTPRINTS (Premium Google Maps Block Styling with soft border) -->
-    <polygon points="0,0 150,0 150,18 0,18" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="20,42 160,42 160,110 90,110" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="0,142 62,142 32,200 0,200" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="95,142 165,142 165,200 115,200" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="345,42 400,42 400,110 345,110" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="200,0 320,0 320,28 200,28" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
-    <polygon points="195,142 400,142 400,200 195,200" fill="#f1f3f4" stroke="#ffffff" stroke-width="1" />
+    <!-- BUILDING FOOTPRINTS (Premium Google Maps Soft Overlapping Shapes) -->
+    <!-- Area 1: Above Old Street (y < 30) -->
+    <polygon points="0,0 40,0 40,18 0,18" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="5" y="3" width="30" height="10" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="50,0 90,0 90,18 50,18" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="55" y="3" width="30" height="10" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="100,0 150,0 150,18 125,18 125,10 100,10" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    
+    <polygon points="200,0 250,0 250,24 200,24" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="210" y="4" width="30" height="16" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="260,0 315,0 315,24 260,24" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="270" y="4" width="35" height="16" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="325,0 390,0 390,18 325,18" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="335" y="3" width="40" height="10" rx="1" fill="#d9dfe6" />
+
+    <!-- Area 2: Block between Old St & Rivington St, West of Rufus St -->
+    <polygon points="20,42 75,42 75,75 20,75" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <circle cx="48" cy="58" r="6" fill="#d9dfe6" />
+    
+    <polygon points="85,42 160,42 160,75 85,75" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="95" y="48" width="55" height="20" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="95,85 160,85 160,110 95,110" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="105" y="90" width="45" height="15" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="42,80 80,80 65,110 27,110" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+
+    <!-- Area 3: East of Hoxton Square Park -->
+    <polygon points="345,42 400,42 400,72 345,72" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="355" y="48" width="35" height="18" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="345,80 400,80 400,110 345,110" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="355" y="86" width="35" height="18" rx="1" fill="#d9dfe6" />
+
+    <!-- Area 4: South of Hoxton Square Park -->
+    <rect x="215" y="108" width="50" height="12" rx="2" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="225" y="111" width="30" height="6" rx="1" fill="#d9dfe6" />
+    
+    <rect x="270" y="108" width="20" height="12" rx="2" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    
+    <rect x="295" y="112" width="30" height="12" rx="2" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="302" y="115" width="16" height="6" rx="1" fill="#d9dfe6" />
+
+    <!-- Area 5: Bottom Left Block (West of Great Eastern St) -->
+    <polygon points="0,142 52,142 42,170 0,170" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <polygon points="0,176 38,176 26,200 0,200" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+
+    <!-- Area 6: Bottom Middle Block (Institutional/Hotel Premium Warm Cream) -->
+    <polygon points="95,142 165,142 165,200 115,200" fill="#fef7e0" stroke="#faefe5" stroke-width="0.5" />
+    <rect x="110" y="150" width="40" height="35" rx="1" fill="#fbf0d7" />
+    <circle cx="120" cy="160" r="2" fill="#f3e6c5" />
+    <circle cx="126" cy="160" r="2" fill="#f3e6c5" />
+
+    <!-- Area 7: Bottom Right Block (East of Rufus St) -->
+    <polygon points="195,142 255,142 255,175 195,175" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="205" y="148" width="40" height="20" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="265,142 325,142 325,175 265,175" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <circle cx="295" cy="158" r="6" fill="#d9dfe6" />
+    
+    <polygon points="335,142 400,142 400,175 335,175" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <rect x="345" y="148" width="45" height="20" rx="1" fill="#d9dfe6" />
+    
+    <polygon points="195,182 255,182 255,200 195,200" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <polygon points="265,182 325,182 325,200 265,200" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
+    <polygon points="335,182 400,182 400,200 335,200" fill="#e8ecf1" stroke="#ffffff" stroke-width="0.5" />
     
     <!-- HOXTON SQUARE PARK (Soft light green park layer with paths and details) -->
-    <rect x="210" y="52" width="100" height="36" rx="6" fill="#e6f4ea" stroke="#a8dab5" stroke-width="1" />
+    <rect x="210" y="52" width="100" height="36" rx="6" fill="#e6f4ea" stroke="#c2e7d9" stroke-width="0.5" />
     <!-- Scenic diagonal walking path inside the park -->
     <line x1="220" y1="52" x2="300" y2="88" stroke="#f5f5f5" stroke-width="2.5" />
     <!-- Decorative water fountain in the park center -->
@@ -31,39 +93,31 @@
     <text x="260" y="83" text-anchor="middle" fill="#2e7d32" font-size="6.5" font-family="Outfit" font-weight="700" opacity="0.95">Hoxton Square</text>
     
     <!-- STREET LAYOUTS -->
-    <!-- Great Eastern St (Major Arterial) -->
-    <path d="M 30 200 L 120 0" fill="none" stroke="#e8eaed" stroke-width="26" stroke-linecap="round" />
-    <path d="M 30 200 L 120 0" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" />
-    <path d="M 30 200 L 120 0" fill="none" stroke="#dadce0" stroke-width="0.8" stroke-dasharray="3,5" />
-    
-    <!-- Old Street (Major Arterial) -->
-    <path d="M 0 30 L 400 30" fill="none" stroke="#e8eaed" stroke-width="22" stroke-linecap="round" />
-    <path d="M 0 30 L 400 30" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round" />
-    <path d="M 0 30 L 400 30" fill="none" stroke="#dadce0" stroke-width="0.8" stroke-dasharray="3,5" />
-    
-    <!-- Rivington St (Main Local St) -->
-    <path d="M 80 130 L 400 130" fill="none" stroke="#e8eaed" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Street Casings (White Borders) -->
+    <path d="M 30 200 L 120 0" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" />
+    <path d="M 0 30 L 400 30" fill="none" stroke="#ffffff" stroke-width="15" stroke-linecap="round" />
     <path d="M 80 130 L 400 130" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
-    
-    <!-- Rufus St (Local Link to Hoxton Square) -->
-    <path d="M 180 30 L 180 130" fill="none" stroke="#e8eaed" stroke-width="16" stroke-linecap="round" />
-    <path d="M 180 30 L 180 130" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
-    
-    <!-- Hoxton Sq North Perimeter Road -->
-    <path d="M 180 40 L 330 40" fill="none" stroke="#e8eaed" stroke-width="14" stroke-linecap="round" />
-    <path d="M 180 40 L 330 40" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
-    
-    <!-- Hoxton Sq South Perimeter Road -->
-    <path d="M 180 100 L 330 100" fill="none" stroke="#e8eaed" stroke-width="14" stroke-linecap="round" />
-    <path d="M 180 100 L 330 100" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
-    
-    <!-- Hoxton Sq East Perimeter Road -->
-    <path d="M 330 40 L 330 130" fill="none" stroke="#e8eaed" stroke-width="14" stroke-linecap="round" />
-    <path d="M 330 40 L 330 130" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" />
+    <path d="M 180 30 L 180 130" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" />
+    <path d="M 180 40 L 330 40" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+    <path d="M 180 100 L 330 100" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+    <path d="M 330 40 L 330 130" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" />
+
+    <!-- Street Fills (Yellow/Orange for Arterials, Slate Blue-Grey for Locals) -->
+    <path d="M 30 200 L 120 0" fill="none" stroke="#fcd35c" stroke-width="13" stroke-linecap="round" />
+    <path d="M 0 30 L 400 30" fill="none" stroke="#fcd35c" stroke-width="11" stroke-linecap="round" />
+    <path d="M 80 130 L 400 130" fill="none" stroke="#bac7d5" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 180 30 L 180 130" fill="none" stroke="#bac7d5" stroke-width="7" stroke-linecap="round" />
+    <path d="M 180 40 L 330 40" fill="none" stroke="#bac7d5" stroke-width="5.5" stroke-linecap="round" />
+    <path d="M 180 100 L 330 100" fill="none" stroke="#bac7d5" stroke-width="5.5" stroke-linecap="round" />
+    <path d="M 330 40 L 330 130" fill="none" stroke="#bac7d5" stroke-width="5.5" stroke-linecap="round" />
+
+    <!-- Street Details & Centerlines -->
+    <path d="M 30 200 L 120 0" fill="none" stroke="#cfd6e0" stroke-width="0.8" stroke-dasharray="3,5" />
+    <path d="M 0 30 L 400 30" fill="none" stroke="#cfd6e0" stroke-width="0.8" stroke-dasharray="3,5" />
     
     <!-- DOTTED PEDESTRIAN ZEBRA CROSSING MARKERS -->
-    <line x1="154" y1="130" x2="170" y2="130" stroke="#dadce0" stroke-width="3" stroke-dasharray="1.2,1.2" />
-    <line x1="154" y1="130" x2="170" y2="130" stroke="#ffffff" stroke-width="2" stroke-dasharray="1.2,1.2" opacity="0.9" />
+    <line x1="154" y1="130" x2="170" y2="130" stroke="#ffffff" stroke-width="2" stroke-dasharray="1.2,1.2" />
+    <line x1="154" y1="130" x2="170" y2="130" stroke="#bac7d5" stroke-width="1.2" stroke-dasharray="1.2,1.2" opacity="0.9" />
     
     <!-- STREET NAME LABELS -->
     <text x="355" y="134" fill="rgba(0,0,0,0.35)" font-size="7" font-family="Outfit" font-weight="bold" letter-spacing="0.5">RIVINGTON ST</text>
@@ -89,13 +143,25 @@
     <circle cx="240" cy="130" r="3.5" fill="#13b5b1" stroke="#ffffff" stroke-width="0.5" />
     <text x="240" y="139" text-anchor="middle" fill="#0f8582" font-size="5.5" font-family="Outfit" font-weight="bold">🐾 Shoreditch Pet Supplies</text>
     
+    <!-- 5. Dishoom POI (Yellow/Orange) -->
+    <circle cx="140" cy="155" r="3.5" fill="#ff9e0f" stroke="#ffffff" stroke-width="0.5" />
+    <text x="140" y="164" text-anchor="middle" fill="#c26a00" font-size="5.5" font-family="Outfit" font-weight="bold">🍛 Dishoom</text>
+    
+    <!-- 6. Happiness Forgets POI (Yellow/Orange) -->
+    <circle cx="240" cy="114" r="3.5" fill="#ff9e0f" stroke="#ffffff" stroke-width="0.5" />
+    <text x="240" y="123" text-anchor="middle" fill="#c26a00" font-size="5.5" font-family="Outfit" font-weight="bold">🍸 Happiness Forgets</text>
+    
+    <!-- 7. A.P.C. Shoreditch POI (Cyan/Teal) -->
+    <circle cx="310" cy="118" r="3.5" fill="#13b5b1" stroke="#ffffff" stroke-width="0.5" />
+    <text x="310" y="127" text-anchor="middle" fill="#0f8582" font-size="5.5" font-family="Outfit" font-weight="bold">🛍️ A.P.C.</text>
+    
     <!-- PEDESTRIAN WALKING ROUTE (Cobalt blue navigation layout with 5 turns) -->
     <!-- Route casing glow -->
-    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#1a73e8" stroke-width="7" opacity="0.22" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#1a73e8" stroke-width="5" opacity="0.22" stroke-linecap="round" stroke-linejoin="round" />
     <!-- Vibrant Blue Core line -->
-    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#4285f4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#4285f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     <!-- Walking footprint dots -->
-    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="2,6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="2,6" stroke-linecap="round" stroke-linejoin="round" />
     
     <!-- GOOGLE MAPS TEARDROP PIN 1: The Hoxton (Hotel Blue) -->
     <circle cx="65" cy="165" r="12" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.3" />
@@ -106,7 +172,7 @@
     <circle cx="65" cy="148" r="4" fill="#1a73e8" />
     <text x="65" y="151" text-anchor="middle" fill="#ffffff" font-size="6.5" font-weight="bold">🛏️</text>
     <!-- Floating label card -->
-    <rect x="25" y="120" width="80" height="14" rx="3" fill="#1a73e8" />
+    <rect x="13" y="120" width="104" height="14" rx="3" fill="#1a73e8" />
     <text x="65" y="130" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold" font-family="Outfit">The Hoxton, Shoreditch</text>
     
     <!-- GOOGLE MAPS TEARDROP PIN 2: Sister's Flat (Home Red) -->
@@ -155,7 +221,7 @@
     <line x1="15" y1="178" x2="55" y2="178" stroke="#70757a" stroke-width="1.2" />
     <line x1="15" y1="175" x2="15" y2="181" stroke="#70757a" stroke-width="1.2" />
     <line x1="55" y1="175" x2="55" y2="181" stroke="#70757a" stroke-width="1.2" />
-    <text x="35" y="171" text-anchor="middle" fill="#70757a" font-size="6.5" font-family="Outfit" font-weight="bold">500 m</text>
+    <text x="35" y="171" text-anchor="middle" fill="#70757a" font-size="6.5" font-family="Outfit" font-weight="bold">200 m</text>
     <!-- Logo -->
     <text x="16" y="192" fill="rgba(0,0,0,0.3)" font-size="10.5" font-family="Outfit, sans-serif" font-weight="bold" letter-spacing="0.5">Google</text>
 </svg>
