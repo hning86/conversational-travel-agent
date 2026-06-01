@@ -33,6 +33,20 @@ def search_hotels(query: str, user_id: str) -> List[Dict[str, Any]]:
     profile = bq.get_user_profile(user_id)
     return vector_search.vector_search_hotels(query, user_profile=profile)
 
+def search_flights(origin: str, destination: str, preferred_airline: str = "KLM") -> List[Dict[str, Any]]:
+    """
+    Queries the flight schedule database for flight options between origin and destination,
+    filtering by the customer's preferred airline brand.
+    
+    Args:
+        origin: The departure airport code (e.g. 'AMS').
+        destination: The arrival airport code (e.g. 'LHR').
+        preferred_airline: The preferred airline brand, e.g. 'KLM'.
+    """
+    vector_search = MockVertexAISearch(shared_collector)
+    return vector_search.vector_search_flights(origin, destination, preferred_airline)
+
+
 
 # --- Define ADK 2.0 Agents ---
 
@@ -64,8 +78,9 @@ flights_agent = Agent(
     model="gemini-3.1-flash-lite",
     instruction="""
     You are the Booking.com Flights Specialist.
-    Your job is to find flights that align with the user's preferred times, airlines (like KLM), and home airport constraints.
-    """
+    Use the 'search_flights' tool to find flight schedules and pricing that align with the user's preferred times, airlines (like KLM), and home airport constraints.
+    """,
+    tools=[search_flights]
 )
 
 policy_agent = Agent(
