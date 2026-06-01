@@ -452,7 +452,7 @@ function generateCardHtml(card) {
                     <div class="map-bullet">${card.dog_friendly}</div>
                 </div>
                 <!-- Dynamic Google Maps Lighter Mockup SVG (Extracted to map_mockup.svg for high maintainability) -->
-                <img src="/map_mockup.svg" class="map-svg" style="width: 100%; border-radius: 14px; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: auto; display: block;" alt="Route to Sister's Flat" onload="scrollToBottom(document.getElementById('chatHistory'))" />
+                <img src="/map_mockup.svg?v=${Date.now()}" class="map-svg" style="width: 100%; border-radius: 14px; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 4px 15px rgba(0,0,0,0.05); height: auto; display: block;" alt="Route to Sister's Flat" onload="scrollToBottom(document.getElementById('chatHistory'))" />
             `;
             break;
             
