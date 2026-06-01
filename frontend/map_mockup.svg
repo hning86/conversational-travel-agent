@@ -152,5 +152,5 @@
     <line x1="55" y1="175" x2="55" y2="181" stroke="#70757a" stroke-width="1.2" />
     <text x="35" y="171" text-anchor="middle" fill="#70757a" font-size="6.5" font-family="Outfit" font-weight="bold">500 m</text>
     <!-- Logo -->
-    <text x="16" y="192" fill="rgba(0,0,0,0.3)" font-size="10.5" font-family="Times New Roman" font-weight="bold" font-style="italic" letter-spacing="0.5">Google</text>
+    <text x="16" y="192" fill="rgba(0,0,0,0.3)" font-size="10.5" font-family="Outfit, sans-serif" font-weight="bold" letter-spacing="0.5">Google</text>
 </svg>
