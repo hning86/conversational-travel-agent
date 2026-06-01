@@ -2,8 +2,13 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
-from agent_graph import run_booking_agent
-from mock_gcp import MockFirestore, GCPLogCollector
+import sys
+import os
+# Add the parent directory (project root) to the Python path to import the booking_agent module
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from booking_agent.agent_graph import run_booking_agent
+from booking_agent.mock_gcp import MockFirestore, GCPLogCollector
 import uvicorn
 
 app = FastAPI(title="Booking.com 2026 AI Vision Multi-Agent Backend")

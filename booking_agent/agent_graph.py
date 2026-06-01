@@ -3,7 +3,7 @@ import json
 import asyncio
 from typing import Dict, Any, List, Optional
 from google.adk import Agent, Workflow, Event
-from mock_gcp import GCPLogCollector, MockBigQuery, MockFirestore, MockVertexAISearch, MockSecretManager
+from .mock_gcp import GCPLogCollector, MockBigQuery, MockFirestore, MockVertexAISearch, MockSecretManager
 
 # --- Define ADK 2.0 Agents ---
 
