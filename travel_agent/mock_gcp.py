@@ -1,6 +1,10 @@
 import os
 import json
 from typing import Dict, Any, List
+from dotenv import load_dotenv
+
+# Load environment variables from .env file if present
+load_dotenv()
 
 class GCPLogCollector:
     """Collects and structures backend operation logs to send to the frontend console."""
@@ -181,7 +185,9 @@ class MockVertexAISearch:
         ]
 
     def vector_search_hotels(self, query: str) -> List[Dict[str, Any]]:
-        self.logger.log("VertexAI Search", f"Initiating Vector Search on endpoint 'endpoint-hotels-vector-01' with query: '{query}'")
+        project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
+        location = os.getenv("GCP_LOCATION", "us-central1")
+        self.logger.log("VertexAI Search", f"Initiating Vector Search on endpoint 'projects/{project_id}/locations/{location}/indexEndpoints/endpoint-hotels-vector-01' with query: '{query}'")
         
         keywords = query.lower().split()
         scored_hotels = []
@@ -225,7 +231,9 @@ class MockVertexAISearch:
         return results
 
     def vector_search_flights(self, origin: str, destination: str, preferred_airline: str = "KLM") -> List[Dict[str, Any]]:
-        self.logger.log("VertexAI Search", f"Initiating Flight Vector Query: origin='{origin}', destination='{destination}', preferred='{preferred_airline}'")
+        project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
+        location = os.getenv("GCP_LOCATION", "us-central1")
+        self.logger.log("VertexAI Search", f"Initiating Flight Vector Query (projects/{project_id}/locations/{location}): origin='{origin}', destination='{destination}', preferred='{preferred_airline}'")
         results = [
             f for f in self.flights_index 
             if "ams" in f["origin"].lower() and "lhr" in f["destination"].lower() and preferred_airline.lower() in f["airline"].lower()
@@ -240,11 +248,12 @@ class MockSecretManager:
         self.secrets = {
             "booking-api-key": "bk_live_sec_prod_902187319a823f9c",
             "klm-partner-token": "klm_p_token_2026_ff8923a1",
-            "vertex-ai-project-id": "ninghai-ccai"
+            "vertex-ai-project-id": os.getenv("GCP_PROJECT", "ninghai-ccai")
         }
 
     def get_secret(self, key_name: str) -> str:
-        self.logger.log("SecretManager", f"Accessing secret: projects/ninghai-ccai/secrets/{key_name}/versions/latest")
+        project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
+        self.logger.log("SecretManager", f"Accessing secret: projects/{project_id}/secrets/{key_name}/versions/latest")
         secret = self.secrets.get(key_name, "MOCK_KEY")
         masked = secret[:6] + "..." + secret[-4:] if len(secret) > 10 else "******"
         self.logger.log("SecretManager", f"Secret accessed successfully. Token: {masked}")

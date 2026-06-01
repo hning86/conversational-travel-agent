@@ -77,3 +77,7 @@ session_state.json
 
 # ADK
 .adk/
+
+# Environment
+.env
+.env.local
