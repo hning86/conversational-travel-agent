@@ -7,7 +7,7 @@ import os
 # Add the parent directory (project root) to the Python path to import the travel_agent module
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from travel_agent.agent_graph import run_booking_agent
+from agent_runner import run_booking_agent
 from travel_agent.mock_gcp import MockFirestore, GCPLogCollector
 import uvicorn
 
