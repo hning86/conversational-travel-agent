@@ -179,66 +179,71 @@
                 <div class="mermaid-container">
                     <div class="mermaid" id="mermaidDiagram">
 flowchart TD
-    %% Node Definitions
     User["User - Laura"]
     
-    subgraph OrchSection ["Orchestration Layer - Cloud Run"]
+    subgraph OrchGroup ["1. Orchestration & Session Context (Cloud Run)"]
         Orch["Orchestrator - ADK 2.0 Core"]
-        FS_DB["Firestore - Session State"]
+        BQ[("BigQuery - User Profiles")]
+        FS_DB[("Firestore - Session State")]
+        SM["Secret Manager - API Keys"]
     end
-    
-    subgraph AgentSection ["Enterprise Specialized Agents"]
+
+    subgraph SearchSub ["2. Hotels & Flights Booking Search"]
         Hotels["Hotels Agent"]
         Flights["Flights Agent"]
-        Policy["Policy Agent - RAG"]
-        Mapping["Mapping Agent - Spatial Specialist"]
+        VS_DB[("Vertex AI Search - Hotel/Flight Vectors")]
     end
     
-    subgraph GCPSection ["Google Cloud Platform and Tools"]
-        BQ["BigQuery - User Profiles"]
-        VS_DB["Vertex AI Search - Vectors"]
-        SM["Secret Manager - Secure Keys"]
+    subgraph PolicySub ["3. RAG Pet Travel Policy Verification"]
+        Policy["Policy Agent - RAG"]
         PolicyDocs["Brexit Pet Travel Policy - PDFs"]
+    end
+    
+    subgraph MappingSub ["4. Spatial Routing & Grounding"]
+        Mapping["Mapping Agent - Spatial Specialist"]
         MapTool["Google Map Grounding Tool"]
     end
 
-    %% Turn Flow Relationships
-    User -->|1. romantic weekend proposal| Orch
-    Orch -->|Reads preferences| BQ
-    Orch -->|Check state| FS_DB
+    %% Vertical stacking via hidden links (replacing ~~~)
+    VS_DB --- Policy
+    PolicyDocs --- Mapping
+    linkStyle 15,16 stroke:none
+
+    %% Turn Flow & Connections
+    User -->|1. romantic getaway / 2. pivot to London| Orch
+    User -->|3. Brexit pet entry rules inquiry| Orch
+    User -->|4. pedestrian walking distance| Orch
+    User -->|5. apply Genius discount & book| Orch
     
-    %% Turn 1 & 2
+    %% Orch DB/Context flow
+    Orch -->|Reads context| BQ
+    Orch <-->|Saves/Restores state| FS_DB
+    Orch -->|Pulls credentials| SM
+
+    %% Orch Agent routing
     Orch -->|Routes search| Hotels
     Orch -->|Routes flights| Flights
-    Hotels -->|Vector search| VS_DB
-    Flights -->|Schedule lookup| VS_DB
-    
-    %% Turn 3
-    User -->|3. Brexit policy anxiety| Orch
     Orch -->|Routes policy query| Policy
-    Policy -->|Semantic search| PolicyDocs
-    
-    %% Turn 4
-    User -->|4. distance walk to sister| Orch
     Orch -->|Routes spatial query| Mapping
+
+    %% Agent Tools connections
+    Hotels -->|Semantic lookup| VS_DB
+    Flights -->|Schedule lookup| VS_DB
+    Policy -->|Semantic search| PolicyDocs
     Mapping -->|Pedestrian routing via Google Map Grounding| MapTool
-    
-    %% Turn 5
-    User -->|5. lock in booking| Orch
-    Orch -->|Fetches API Keys| SM
-    Orch -->|Applies Genius discount| BQ
-    Orch -->|Saves confirmed booking| FS_DB
-    
+
     %% Styling/Formatting
     style Orch fill:#003580,stroke:#006cff,stroke-width:2px,color:#fff
+    style BQ fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
+    style FS_DB fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
+    style SM fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
+    
     style Hotels fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
     style Flights fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
     style Policy fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
     style Mapping fill:#1e293b,stroke:#475569,stroke-width:1.5px,color:#f1f5f9
-    style BQ fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
-    style FS_DB fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
-    style VS_DB fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
-    style SM fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
+    
+    style VS_DB fill:#022340,stroke:#006cff,stroke-width:1.5px,color:#fff
     style PolicyDocs fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
     style MapTool fill:#0f172a,stroke:#0284c7,stroke-width:1.5px,color:#38bdf8
                     </div>
