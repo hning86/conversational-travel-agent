@@ -313,6 +313,23 @@ function generateCardHtml(card) {
                     </div>
                     <div class="hotel-tagline">${card.tagline}</div>
                     <p class="hotel-desc">${card.description}</p>
+                    ${card.guest_review ? `
+                        <div class="hotel-review-quote">
+                            <span class="quote-text">“${card.guest_review}”</span>
+                        </div>
+                    ` : ''}
+                    ${card.videos && card.videos.length > 0 ? `
+                        <div class="hotel-videos">
+                            <span class="video-header">📹 Influencer Vlogs:</span>
+                            <div class="video-links">
+                                ${card.videos.map(v => `
+                                    <a href="${v.url}" target="_blank" class="video-badge">
+                                        <span class="play-btn">▶</span> ${v.title} (${v.author})
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
                 </div>
             `;
             break;
@@ -337,6 +354,23 @@ function generateCardHtml(card) {
                     <div class="details-list">
                         ${card.details.map(bullet => `<div class="detail-bullet">${bullet}</div>`).join('')}
                     </div>
+                    ${card.guest_review ? `
+                        <div class="hotel-review-quote">
+                            <span class="quote-text">“${card.guest_review}”</span>
+                        </div>
+                    ` : ''}
+                    ${card.videos && card.videos.length > 0 ? `
+                        <div class="hotel-videos">
+                            <span class="video-header">📹 Influencer Vlogs:</span>
+                            <div class="video-links">
+                                ${card.videos.map(v => `
+                                    <a href="${v.url}" target="_blank" class="video-badge">
+                                        <span class="play-btn">▶</span> ${v.title} (${v.author})
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
                 </div>
             `;
             break;

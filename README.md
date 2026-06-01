@@ -19,7 +19,7 @@ graph TD
         AppAPI <-->|Invokes| Runner[🏃‍♂️ Agent Runner: agent_runner.py]
     end
     
-    subgraph travel_agent [travel_agent package]
+    subgraph travel_agent [Dot Travel Assistant]
         direction TB
         Workflow[🧩 ADK 2.0 Workflow]
         Dot[🤖 Orchestrator: 'Dot' router_agent]

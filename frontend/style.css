@@ -680,6 +680,68 @@ body {
     line-height: 1.35;
 }
 
+.hotel-review-quote {
+    margin-top: 10px;
+    padding: 6px 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 2px solid var(--booking-yellow);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: var(--slate-300);
+    line-height: 1.4;
+}
+
+.hotel-videos {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.video-header {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--slate-300);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.video-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.video-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    color: #ff8a8a;
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition);
+    width: fit-content;
+}
+
+.video-badge:hover {
+    background-color: rgba(255, 0, 0, 0.15);
+    border-color: rgba(255, 0, 0, 0.4);
+    color: #ffb3b3;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(255, 0, 0, 0.15);
+}
+
+.video-badge .play-btn {
+    color: #ff3333;
+    font-size: 0.65rem;
+}
+
 /* Multi-Item Carousel Containers (Horizontal swiping look in desktop grid) */
 .rich-cards-row {
     display: grid;

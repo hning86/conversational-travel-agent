@@ -78,6 +78,10 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                 "price": "€420/night",
                 "tagline": "World-class art & Michelin dining in Saint-Germain",
                 "description": "Perfect for your love of art and good food. Valet parking included.",
+                "guest_review": "An absolute masterpiece of a hotel. The artistic details and michelin-star food made our romantic getaway unforgettable!",
+                "videos": [
+                    {"title": "Paris Ultimate Art & Luxury Guide", "author": "Wanderlust Vlogs", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+                ],
                 "images": [
                     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=400&q=80",
                     "https://images.unsplash.com/photo-1549294413-26f195afcbce?auto=format&fit=crop&w=400&q=80"
@@ -92,6 +96,10 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                 "price": "€280/night",
                 "tagline": "Quiet romantic charm & fine local art",
                 "description": "Secluded medieval elegance, exquisite restaurant, private courtyard parking.",
+                "guest_review": "Felt like stepping into a romantic fairy tale. The private courtyard and fine art collection are breathtaking.",
+                "videos": [
+                    {"title": "Bruges Hidden Medieval Gems Vlog", "author": "Travel with Sam", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+                ],
                 "images": [
                     "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=400&q=80",
                     "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=400&q=80"
@@ -140,6 +148,11 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                     "🐶 Ground floor room with direct garden patio access",
                     "🌳 Adjacent to Hackney off-leash lawn park",
                     "🚫 No weight limits, pet welcome kit provided"
+                ],
+                "guest_review": "Absolutely the best dog-friendly hotel in London! The ground-floor garden room was perfect for Buster and the staff treated him like royalty.",
+                "videos": [
+                    {"title": "The Hoxton Shoreditch Room Tour & Pet Review", "author": "BarkVloggers", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+                    {"title": "Exploring Shoreditch with a Golden Retriever", "author": "London Doggo Guide", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
                 ],
                 "images": [
                     "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80",
