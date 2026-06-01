@@ -64,7 +64,7 @@ booking_companion_demo/
 ├── travel_agent/              # 🤖 Pure Google ADK 2.0 Agent definitions
 │   ├── __init__.py
 │   ├── agent_graph.py         # Core Agents & Workflow topology definition
-│   └── mock_gcp.py            # Mock database handlers (BigQuery, Vertex Search, Firestore, etc.)
+│   └── mock_tools.py          # GCP Mock databases & agent tools definitions
 ├── backend/                   # ⚡ Web Server & Execution Orchestration
 │   ├── app.py                 # FastAPI route handlers & CORS configurations
 │   ├── agent_runner.py        # run_booking_agent scenario runner & business logic

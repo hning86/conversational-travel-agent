@@ -2,7 +2,7 @@ import os
 import json
 import asyncio
 from typing import Dict, Any, List, Optional
-from travel_agent.mock_gcp import GCPLogCollector, MockBigQuery, MockFirestore, MockVertexAISearch, MockSecretManager
+from travel_agent.mock_tools import GCPLogCollector, MockBigQuery, MockFirestore, MockVertexAISearch, MockSecretManager
 
 async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
     """

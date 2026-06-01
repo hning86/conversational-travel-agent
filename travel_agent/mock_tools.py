@@ -314,3 +314,59 @@ class MockSecretManager:
         masked = secret[:6] + "..." + secret[-4:] if len(secret) > 10 else "******"
         self.logger.log("SecretManager", f"Secret accessed successfully. Token: {masked}")
         return secret
+
+
+# Initialize a shared log collector for tool execution logging
+shared_collector = GCPLogCollector()
+
+# --- Define Agentic Tools ---
+
+def lookup_user_preferences(user_id: str) -> Dict[str, Any]:
+    """
+    Retrieves the customer profile, loyalty tier, and historical travel preferences from BigQuery.
+    
+    Args:
+        user_id: The unique identifier of the customer, e.g. 'user_laura'.
+    """
+    bq = MockBigQuery(shared_collector)
+    return bq.get_user_profile(user_id)
+
+def search_hotels(query: str, user_id: str) -> List[Dict[str, Any]]:
+    """
+    Performs a semantic vector search matching hotel catalog parameters, 
+    automatically applying scoring boosts based on the user's BigQuery profile preferences.
+    
+    Args:
+        query: The description of desired accommodation features (e.g. 'boutique art hotel', 'pet friendly').
+        user_id: The customer identifier used to load search ranking preferences.
+    """
+    bq = MockBigQuery(shared_collector)
+    vector_search = MockVertexAISearch(shared_collector)
+    
+    # Fetch profile from BigQuery to influence search results
+    profile = bq.get_user_profile(user_id)
+    return vector_search.vector_search_hotels(query, user_profile=profile)
+
+def search_flights(origin: str, destination: str, preferred_airline: str = "KLM") -> List[Dict[str, Any]]:
+    """
+    Queries the flight schedule database for flight options between origin and destination,
+    filtering by the customer's preferred airline brand.
+    
+    Args:
+        origin: The departure airport code (e.g. 'AMS').
+        destination: The arrival airport code (e.g. 'LHR').
+        preferred_airline: The preferred airline brand, e.g. 'KLM'.
+    """
+    vector_search = MockVertexAISearch(shared_collector)
+    return vector_search.vector_search_flights(origin, destination, preferred_airline)
+
+def lookup_travel_policy(query: str) -> List[Dict[str, Any]]:
+    """
+    Performs a semantic vector search on unstructured government travel policies and entry regulation indices 
+    (e.g. Brexit rules, pet travel guidelines) to find answers to travel compliance queries.
+    
+    Args:
+        query: The description of the policy topic, e.g. 'pet passport rules', 'Brexit animal health'.
+    """
+    vector_search = MockVertexAISearch(shared_collector)
+    return vector_search.vector_search_policy(query)

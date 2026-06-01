@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from agent_runner import run_booking_agent
-from travel_agent.mock_gcp import MockFirestore, GCPLogCollector
+from travel_agent.mock_tools import MockFirestore, GCPLogCollector
 import uvicorn
 
 app = FastAPI(title="Booking.com 2026 AI Vision Multi-Agent Backend")
