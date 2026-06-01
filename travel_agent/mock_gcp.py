@@ -184,10 +184,14 @@ class MockVertexAISearch:
             }
         ]
 
-    def vector_search_hotels(self, query: str) -> List[Dict[str, Any]]:
+    def vector_search_hotels(self, query: str, user_profile: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
         location = os.getenv("GCP_LOCATION", "us-central1")
-        self.logger.log("VertexAI Search", f"Initiating Vector Search on endpoint 'projects/{project_id}/locations/{location}/indexEndpoints/endpoint-hotels-vector-01' with query: '{query}'")
+        
+        log_msg = f"Initiating Vector Search on endpoint 'projects/{project_id}/locations/{location}/indexEndpoints/endpoint-hotels-vector-01' with query: '{query}'"
+        if user_profile:
+            log_msg += f" | Influenced by BigQuery profile preferences for '{user_profile.get('name', 'user')}'"
+        self.logger.log("VertexAI Search", log_msg)
         
         keywords = query.lower().split()
         scored_hotels = []
@@ -220,6 +224,27 @@ class MockVertexAISearch:
             if "bruges" in keywords:
                 if hotel["city"].lower() == "bruges":
                     score += 6.0
+            
+            # Boost scores based on BigQuery user profile preferences
+            if user_profile:
+                preferences = user_profile.get("preferences", {})
+                
+                # 1. Accommodation preference boost (e.g. Boutique Art Hotels)
+                acc_pref = preferences.get("accommodation_type", "").lower()
+                if "art" in acc_pref and "art" in hotel["tags"]:
+                    score += 3.0
+                if "boutique" in acc_pref and "boutique" in hotel["tags"]:
+                    score += 3.0
+                
+                # 2. Dining preference boost (e.g. Fine dining)
+                dining_pref = preferences.get("dining", "").lower()
+                if "fine dining" in dining_pref and "fine-dining" in hotel["tags"]:
+                    score += 2.0
+                
+                # 3. Pet details preferences boost
+                pet_pref = preferences.get("pet_details", {})
+                if pet_pref and "pet-friendly" in hotel["tags"]:
+                    score += 2.0
                     
             if score > 0.1:
                 scored_hotels.append((score, hotel))

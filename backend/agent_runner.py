@@ -51,8 +51,8 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         
         # Query Vector Search for art + romantic + parking in Paris/Bruges
         collector.log("Hotels Agent", "Invoking Vector Search for Paris & Bruges options matching 'boutique art hotel'.")
-        paris_results = vector_search.vector_search_hotels("Paris boutique art hotel fine-dining parking drive AMS")
-        bruges_results = vector_search.vector_search_hotels("Bruges historic art hotel parking drive AMS")
+        paris_results = vector_search.vector_search_hotels("Paris boutique art hotel fine-dining parking drive AMS", user_profile=profile)
+        bruges_results = vector_search.vector_search_hotels("Bruges historic art hotel parking drive AMS", user_profile=profile)
         
         # Save state in Firestore
         session_state["current_turn"] = 1
@@ -111,7 +111,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         
         # 1. Hotels Agent queries Vector Search
         collector.log("Hotels Agent", "Searching Shoreditch London pet-friendly accommodations (no weight limits) near parks.")
-        london_hotels = vector_search.vector_search_hotels("London Shoreditch pet friendly large dog spacious park access")
+        london_hotels = vector_search.vector_search_hotels("London Shoreditch pet friendly large dog spacious park access", user_profile=profile)
         collector.log("Hotels Agent", "Filtering search results. Removed 'Rosewood London': weight limit (15kg) is too strict for Laura's Golden Retriever (32kg).")
         
         # 2. Flights Agent queries Vector Search
