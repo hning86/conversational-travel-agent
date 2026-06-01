@@ -2,6 +2,8 @@
 
 A fully interactive multi-agent travel planning simulation utilizing the **Google Agent Development Kit (ADK 2.0)** and **FastAPI**. This prototype demonstrates the next-generation conversational capabilities of **Dot**, the Booking.com conversational companion, seamlessly orchestrating specialized sub-agents to fulfill rich, contextual customer itineraries while integrating mock GCP databases.
 
+![Booking.com 2026 AI Vision Demo Screenshot](images/travel_agent_screenshot.png)
+
 ---
 
 ## 🏗️ System Architecture
