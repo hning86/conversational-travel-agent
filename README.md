@@ -133,6 +133,24 @@ npx -y serve -p 3000 .
 
 Open your browser and navigate to `http://localhost:3000` to interact with **Dot**.
 
+### 4. Cloud Run Deployment & Private Access
+
+You can deploy the entire unified application into a secure private Google Cloud Run service:
+
+```bash
+./deploy.sh
+```
+
+Since the application is secured to prevent unauthenticated access, direct public access to the Cloud Run URL will return a `403 Forbidden` error. To securely access and test the server from your local browser:
+
+1. Start the local **gcloud proxy server**:
+```bash
+gcloud run services proxy booking-companion-demo --region=us-central1 --port=8080
+```
+
+2. Open your browser and navigate to:
+👉 **http://localhost:8080**
+
 ## 🧬 Core Multi-Agent Roles
 
 ### 1. **Dot Orchestrator (`router_agent`)**

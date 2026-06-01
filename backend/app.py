@@ -1,11 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
 import sys
 import os
-# Add the parent directory (project root) to the Python path to import the travel_agent module
+# Add both the backend directory and the parent directory (project root) to the Python path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 from agent_runner import run_booking_agent
 from travel_agent.mock_tools import MockFirestore, GCPLogCollector
@@ -55,6 +58,9 @@ async def reset(request: ResetRequest):
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend"))
+app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

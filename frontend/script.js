@@ -3,7 +3,9 @@
  * Core Frontend Interactivity and Multi-Agent Orchestration Bridge
  */
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = window.location.origin.includes("localhost:3000") || window.location.origin.includes("127.0.0.1:3000")
+    ? "http://localhost:8000"
+    : window.location.origin;
 const SESSION_ID = "laura_session_2026";
 
 // Chat UI elements
