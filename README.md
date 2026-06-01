@@ -133,18 +133,20 @@ npx -y serve -p 3000 .
 
 Open your browser and navigate to `http://localhost:3000` to interact with **Dot**.
 
----
-
 ## 🧬 Core Multi-Agent Roles
 
 ### 1. **Dot Orchestrator (`router_agent`)**
-The premier Booking.com companion responsible for analyzing incoming messages, pre-fetching BigQuery loyalty statistics, handling state transitions, and routing specific goals to downstream specialized experts.
+The premier Booking.com companion responsible for analyzing incoming messages, managing state transitions, and orchestrating downstream routing to specialized sub-agents.
 
 ### 2. **Hotels Specialist (`hotels_agent`)**
-Leverages **Vertex AI Vector Search** to discover boutique accommodations based on subtle preferences (such as art, proximity to off-leash parks, and patio access), dynamically filtering out hotels that violate absolute constraints (e.g., strict canine weight limits).
+*   **Tools Equipped:** `lookup_user_preferences`, `search_hotels`
+*   **Role:** Analyzes subtle accommodation preferences (e.g. large pets, ground-floor access, art interests). Dynamically retrieves traveler profiles from **BigQuery**, queries **Vertex AI Vector Search**, and boosts catalog scores based on historical booking preferences while filtering out properties that violate absolute limits (such as canine weight policies).
 
 ### 3. **Flights Specialist (`flights_agent`)**
-Cross-references available flight indexes to map direct travel schedules aligning with historical preferred airlines (like KLM) and departing timings.
+*   **Tools Equipped:** `search_flights`
+*   **Role:** Resolves flight schedules and costs from the carrier database, matching itineraries against preferred airlines (like KLM) and timing constraints.
 
 ### 4. **Travel Policy Advisor (`policy_agent`)**
-A RAG-enabled specialist designed to retrieve complex border entry parameters, generating actionable compliance checklists (e.g., Animal Health Certificate rules post-Brexit).
+*   **Tools Equipped:** `lookup_travel_policy`
+*   **Role:** Evaluates travel border guidelines and pet entry compliance rules. Performs semantic search queries on unstructured government document collections (e.g. Brexit regulations, AHC rules) to generate authoritative and actionable checklists.
+
