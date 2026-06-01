@@ -46,6 +46,18 @@ def search_flights(origin: str, destination: str, preferred_airline: str = "KLM"
     vector_search = MockVertexAISearch(shared_collector)
     return vector_search.vector_search_flights(origin, destination, preferred_airline)
 
+def lookup_travel_policy(query: str) -> List[Dict[str, Any]]:
+    """
+    Performs a semantic vector search on unstructured government travel policies and entry regulation indices 
+    (e.g. Brexit rules, pet travel guidelines) to find answers to travel compliance queries.
+    
+    Args:
+        query: The description of the policy topic, e.g. 'pet passport rules', 'Brexit animal health'.
+    """
+    vector_search = MockVertexAISearch(shared_collector)
+    return vector_search.vector_search_policy(query)
+
+
 
 
 # --- Define ADK 2.0 Agents ---
@@ -88,9 +100,10 @@ policy_agent = Agent(
     model="gemini-3.1-flash-lite",
     instruction="""
     You are the Travel Policy Advisor.
-    You query official policy indexes to answer travel compliance questions (such as Brexit animal health guidelines or visa regulations).
-    Always be accurate, authoritative, and helpful, and offer actionable checklists.
-    """
+    Use the 'lookup_travel_policy' tool to query official policy indexes and document libraries to answer travel compliance questions (such as Brexit animal health guidelines or visa regulations).
+    Always be accurate, authoritative, and helpful, and offer actionable checklists based on document details.
+    """,
+    tools=[lookup_travel_policy]
 )
 
 # --- Define the ADK 2.0 Workflow ---

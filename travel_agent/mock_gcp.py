@@ -184,6 +184,17 @@ class MockVertexAISearch:
             }
         ]
 
+        self.policy_index = [
+            {
+                "document_id": "UK-GOV-Pet-Entry-2026.pdf",
+                "title": "UK Government Post-Brexit Pet Entry Regulations (2026)",
+                "category": "Pet Travel / Brexit",
+                "content": "All dogs, cats, and ferrets entering Great Britain from the EU require: 1. An active microchip. 2. A valid rabies vaccination. 3. An official Animal Health Certificate (AHC) issued by a government-approved vet within 10 days of entry. 4. Approved tapeworm treatment administered by a vet 1 to 5 days before arrival for dogs.",
+                "tags": ["pet", "uk", "brexit", "ahc", "dog", "rabies"]
+            }
+        ]
+
+
     def vector_search_hotels(self, query: str, user_profile: Dict[str, Any] = None) -> List[Dict[str, Any]]:
         project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
         location = os.getenv("GCP_LOCATION", "us-central1")
@@ -265,6 +276,26 @@ class MockVertexAISearch:
         ]
         self.logger.log("VertexAI Search", f"Flight index matching complete. Found {len(results)} direct connections.", payload=results)
         return results
+
+    def vector_search_policy(self, query: str) -> List[Dict[str, Any]]:
+        project_id = os.getenv("GCP_PROJECT", "ninghai-ccai")
+        location = os.getenv("GCP_LOCATION", "us-central1")
+        self.logger.log("VertexAI Search", f"Initiating Semantic Search on unstructured policy store 'projects/{project_id}/locations/{location}/collections/default_collection/dataStores/travel-policies' with query: '{query}'")
+        
+        keywords = query.lower().split()
+        results = []
+        for policy in self.policy_index:
+            match = False
+            for keyword in keywords:
+                if keyword in policy["content"].lower() or keyword in policy["title"].lower() or keyword in "".join(policy["tags"]):
+                    match = True
+                    break
+            if match:
+                results.append(policy)
+                
+        self.logger.log("VertexAI Search", f"Policy search scan complete. Found {len(results)} matching references.", payload=results)
+        return results
+
 
 # --- Mock Secret Manager ---
 class MockSecretManager:
