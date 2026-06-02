@@ -1201,6 +1201,30 @@ body {
     flex-shrink: 0;
 }
 
+.github-link {
+    color: var(--booking-blue-light);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: var(--transition);
+    margin-left: 4px;
+}
+
+.github-link:hover {
+    color: #38bdf8;
+    text-decoration: underline;
+}
+
+.github-icon {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
