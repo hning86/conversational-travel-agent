@@ -228,9 +228,9 @@ body {
 }
 
 .tab-btn.active {
-    color: var(--hyatt-gold);
+    color: var(--hyatt-loyalty-gold);
     background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 2px solid var(--hyatt-gold);
+    border-bottom: 2px solid var(--hyatt-loyalty-gold);
 }
 
 .talk-track-content {
