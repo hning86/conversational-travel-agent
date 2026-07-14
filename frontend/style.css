@@ -2,11 +2,14 @@
    DESIGN SYSTEM & VARIABLES
    ========================================================================== */
 :root {
-    --hyatt-navy: #071D3A;
+    --hyatt-navy: #0C2340;
     --hyatt-navy-light: #1F3D68;
-    --hyatt-gold: #C5A059;
-    --hyatt-gold-light: #E0C797;
-    --hyatt-dark: #050E1A;
+    --hyatt-blue: #004B87;
+    --hyatt-blue-light: #EBF3F9;
+    --hyatt-gold: #004B87; /* Re-mapped gold variables to brand blue for primary accents */
+    --hyatt-gold-light: #6BA4E8;
+    --hyatt-loyalty-gold: #C5A059; /* Strictly for Globalist gold tier indicators */
+    --hyatt-dark: #071220;
     --success-green: #2E7D32;
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
@@ -16,10 +19,10 @@
     --slate-800: #1e293b;
     --slate-900: #0b1320;
     
-    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --shadow-premium: 0 10px 30px -10px rgba(7, 29, 58, 0.25);
-    --shadow-glow: 0 0 15px rgba(197, 160, 89, 0.4);
+    --shadow-premium: 0 10px 30px -10px rgba(12, 35, 64, 0.25);
+    --shadow-glow: 0 0 15px rgba(0, 75, 135, 0.35);
     --border-radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -140,14 +143,14 @@ body {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--hyatt-gold);
+    border: 2px solid var(--hyatt-loyalty-gold);
 }
 
 .level-badge {
     position: absolute;
     bottom: -4px;
     right: -4px;
-    background-color: var(--hyatt-gold);
+    background-color: var(--hyatt-loyalty-gold);
     color: var(--slate-900);
     font-size: 0.65rem;
     font-weight: 700;
@@ -1644,19 +1647,20 @@ body {
     font-size: 0.85rem !important;
 }
 
+
 /* ==========================================================================
    HYATT LIGHT THEME SPECIFIC OVERRIDES (GUEST APP MOBILE MOCKUP)
    ========================================================================== */
 .mobile-frame {
     background-color: #ffffff !important;
-    border: 1px solid #D6CFC4 !important;
-    box-shadow: 0 15px 45px rgba(5, 14, 26, 0.15) !important;
+    border: 1px solid #CBD5E0 !important;
+    box-shadow: 0 12px 35px rgba(12, 35, 64, 0.08) !important;
 }
 
 /* Header */
 .mobile-frame .companion-top {
     background-color: #ffffff !important;
-    border-bottom: 1px solid #EAE5DB !important;
+    border-bottom: 1px solid #E2E8F0 !important;
 }
 
 .mobile-frame .assistant-meta h4 {
@@ -1668,9 +1672,9 @@ body {
 }
 
 .mobile-frame .trip-status {
-    background-color: #FAF8F5 !important;
-    color: var(--hyatt-navy) !important;
-    border: 1px solid #D6CFC4 !important;
+    background-color: var(--hyatt-blue-light) !important;
+    color: var(--hyatt-blue) !important;
+    border: 1px solid #CBDCEB !important;
 }
 
 .mobile-frame .active-dot {
@@ -1679,41 +1683,45 @@ body {
 
 /* Chat History Area */
 .mobile-frame .chat-history {
-    background-color: #FAF8F5 !important; /* Hyatt luxury warm cream */
+    background-color: #FAFBFD !important; /* Hyatt luxury clean light grey-blue tint */
 }
 
-/* User Messages: White with slate border and dark navy text */
+/* User Messages: Vibrant Brand Blue with white text */
 .mobile-frame .user .msg-bubble {
-    background-color: #ffffff !important;
-    border: 1px solid #D6CFC4 !important;
-    color: var(--hyatt-navy) !important;
+    background-color: var(--hyatt-blue) !important;
+    border: none !important;
+    color: #ffffff !important;
+    border-bottom-right-radius: 4px !important;
+    box-shadow: 0 2px 6px rgba(0, 75, 135, 0.1) !important;
 }
 
-/* Hya (Companion) Messages: Deep Hyatt Navy with white text */
+/* Hya (Companion) Messages: Clean white bubble with dark navy text and subtle border */
 .mobile-frame .dot .msg-bubble {
-    background-color: var(--hyatt-navy) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(7, 29, 58, 0.12) !important;
+    background-color: #ffffff !important;
+    border: 1px solid #E2E8F0 !important;
+    color: var(--hyatt-navy) !important;
+    border-bottom-left-radius: 4px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
 }
 
 /* Typing Indicator inside light frame */
 .mobile-frame .typing-dot {
-    background-color: var(--hyatt-gold) !important;
+    background-color: var(--hyatt-blue) !important;
 }
 
 /* Input Footer */
 .mobile-frame .chat-input-bar {
     background-color: #ffffff !important;
-    border-top: 1px solid #EAE5DB !important;
+    border-top: 1px solid #E2E8F0 !important;
 }
 
 .mobile-frame .input-wrapper {
-    background-color: #FAF8F5 !important;
-    border: 1px solid #D6CFC4 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #CBD5E0 !important;
 }
 
 .mobile-frame .input-wrapper:focus-within {
-    border-color: var(--hyatt-gold) !important;
+    border-color: var(--hyatt-blue) !important;
     box-shadow: var(--shadow-glow) !important;
 }
 
@@ -1726,35 +1734,35 @@ body {
 }
 
 .mobile-frame .btn-send {
-    background-color: var(--hyatt-navy) !important;
+    background-color: var(--hyatt-blue) !important;
     color: #ffffff !important;
 }
 
 .mobile-frame .btn-send:hover {
-    background-color: var(--hyatt-gold) !important;
+    background-color: var(--hyatt-navy) !important;
 }
 
 /* Watermark */
 .mobile-frame .co-branding-watermark {
-    background-color: #F0EAE1 !important;
-    border-top: 1px solid #EAE5DB !important;
+    background-color: #FAFBFD !important;
+    border-top: 1px solid #E2E8F0 !important;
     color: var(--slate-700) !important;
 }
 
 .mobile-frame .co-branding-watermark a {
-    color: var(--hyatt-navy) !important;
+    color: var(--hyatt-blue) !important;
 }
 
 .mobile-frame .co-branding-watermark a:hover {
-    color: var(--hyatt-gold) !important;
+    color: var(--hyatt-navy) !important;
 }
 
 /* Custom Scrollbar inside light theme */
 .mobile-frame .chat-history::-webkit-scrollbar-thumb {
-    background: rgba(7, 29, 58, 0.15) !important;
+    background: rgba(12, 35, 64, 0.15) !important;
 }
 
-/* Cards inside Hya's navy bubble */
+/* Cards inside Hya's white bubble */
 .mobile-frame .rich-hotel-card,
 .mobile-frame .london-detail-card,
 .mobile-frame .rich-flight-card,
@@ -1763,8 +1771,8 @@ body {
 .mobile-frame .rich-dining-card,
 .mobile-frame .rich-map-card {
     background-color: #ffffff !important;
-    border: 1px solid #EAE5DB !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
     color: var(--hyatt-navy) !important;
 }
 
@@ -1791,12 +1799,12 @@ body {
 }
 
 .mobile-frame .hotel-tagline {
-    color: var(--hyatt-gold) !important;
+    color: var(--hyatt-blue) !important;
 }
 
 .mobile-frame .hotel-review-quote {
-    background-color: #F7F5F0 !important;
-    border-left: 2px solid var(--hyatt-gold) !important;
+    background-color: var(--hyatt-blue-light) !important;
+    border-left: 2px solid var(--hyatt-blue) !important;
     color: var(--slate-700) !important;
 }
 
@@ -1819,8 +1827,8 @@ body {
     color: var(--success-green) !important;
 }
 .mobile-frame .rich-policy-card .policy-item.highlight {
-    background-color: rgba(197, 160, 89, 0.08) !important;
-    border-left-color: var(--hyatt-gold) !important;
+    background-color: rgba(0, 75, 135, 0.04) !important;
+    border-left-color: var(--hyatt-blue) !important;
 }
 
 /* Map Card */
@@ -1836,14 +1844,10 @@ body {
 
 /* Buttons in Cards */
 .mobile-frame .btn-card-action {
-    background-color: var(--hyatt-navy) !important;
+    background-color: var(--hyatt-blue) !important;
     color: #ffffff !important;
 }
 
 .mobile-frame .btn-card-action:hover {
-    background-color: var(--hyatt-gold) !important;
+    background-color: var(--hyatt-navy) !important;
 }
-
-
-
-
