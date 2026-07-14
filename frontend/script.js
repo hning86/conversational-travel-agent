@@ -1,5 +1,5 @@
 /**
- * Booking.com | 2026 AI Vision Demo Platform
+ * World of Hyatt | 2026 AI Vision Demo Platform
  * Core Frontend Interactivity and Multi-Agent Orchestration Bridge
  */
 
@@ -572,7 +572,7 @@ function highlightSvgPath(node1, link, node2) {
 function updateTripHeader(turn) {
     switch (turn) {
         case 1:
-            headerTripStatus.textContent = "Amsterdam -> Paris / Bruges";
+            headerTripStatus.textContent = "Amsterdam -> Paris / Brussels (Hyatt)";
             break;
         case 2:
         case 3:

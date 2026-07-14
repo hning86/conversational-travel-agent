@@ -32,19 +32,19 @@ class MockBigQuery:
             "user_laura": {
                 "user_id": "user_laura",
                 "name": "Laura",
-                "loyalty_status": "Genius Level 3",
+                "loyalty_status": "Globalist",
                 "discount_multiplier": 0.85, # 15% discount
                 "home_airport": "AMS (Amsterdam Schiphol)",
                 "past_bookings": [
                     {
                         "destination": "Rome, Italy",
-                        "hotel": "Hotel Raphael - Relais & Châteaux (Boutique Art Hotel)",
+                        "hotel": "Park Hyatt Rome (Luxury Art Hotel)",
                         "rating": 5,
                         "review": "Absolutely loved the boutique art collection and rooftop terrace. Fine dining was divine!"
                     }
                 ],
                 "preferences": {
-                    "accommodation_type": "Boutique Art Hotels",
+                    "accommodation_type": "Luxury Art Hotels",
                     "dining": "Fine dining & Michelin stars",
                     "transport": "KLM Preferred Flyer, Road-trip routes",
                     "pet_details": {
@@ -57,7 +57,7 @@ class MockBigQuery:
         }
 
     def get_user_profile(self, user_id: str) -> Dict[str, Any]:
-        self.logger.log("BigQuery", f"Executing analytical query: SELECT * FROM `booking-dw.customer_analytics.profiles` WHERE user_id = '{user_id}'")
+        self.logger.log("BigQuery", f"Executing analytical query: SELECT * FROM `hyatt-dw.customer_analytics.profiles` WHERE user_id = '{user_id}'")
         profile = self.users.get(user_id)
         if profile:
             self.logger.log("BigQuery", "Query returned 1 row. Profile loaded successfully.", payload={
@@ -112,7 +112,7 @@ class MockVertexAISearch:
         self.hotels_index = [
             {
                 "id": "paris_1",
-                "name": "L'Hôtel Paris",
+                "name": "Park Hyatt Paris-Vendôme",
                 "city": "Paris",
                 "description": "Historical, high-end boutique art hotel in Saint-Germain-des-Prés, boasting original artworks, Michelin dining, and private courtyards.",
                 "rating": 4.9,
@@ -127,7 +127,7 @@ class MockVertexAISearch:
             },
             {
                 "id": "bruges_1",
-                "name": "Hotel Heritage - Relais & Châteaux",
+                "name": "Hotel Heritage (SLH Hyatt Partner)",
                 "city": "Bruges",
                 "description": "Sophisticated, historic art-filled hotel in Bruges center. Includes private parking, exquisite local dining, and quiet romantic charm.",
                 "rating": 4.8,
@@ -142,7 +142,7 @@ class MockVertexAISearch:
             },
             {
                 "id": "london_hoxton",
-                "name": "The Hoxton, Shoreditch",
+                "name": "Andaz London Liverpool Street",
                 "city": "London",
                 "description": "Vibrant, pet-friendly hub in Shoreditch. Ground-floor patio rooms offer direct park access. Highly welcoming to large dogs, pet fee included, next to an off-leash lawn park.",
                 "rating": 9.2,
@@ -240,7 +240,7 @@ class MockVertexAISearch:
             if user_profile:
                 preferences = user_profile.get("preferences", {})
                 
-                # 1. Accommodation preference boost (e.g. Boutique Art Hotels)
+                # 1. Accommodation preference boost (e.g. Luxury Art Hotels)
                 acc_pref = preferences.get("accommodation_type", "").lower()
                 if "art" in acc_pref and "art" in hotel["tags"]:
                     score += 3.0
@@ -302,7 +302,7 @@ class MockSecretManager:
     def __init__(self, logger: GCPLogCollector):
         self.logger = logger
         self.secrets = {
-            "booking-api-key": "bk_live_sec_prod_902187319a823f9c",
+            "hyatt-api-key": "bk_live_sec_prod_902187319a823f9c",
             "klm-partner-token": "klm_p_token_2026_ff8923a1",
             "vertex-ai-project-id": os.getenv("GCP_PROJECT", "ninghai-ccai")
         }

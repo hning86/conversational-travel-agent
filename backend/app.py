@@ -14,7 +14,7 @@ from agent_runner import run_booking_agent
 from travel_agent.mock_tools import MockFirestore, GCPLogCollector
 import uvicorn
 
-app = FastAPI(title="Booking.com 2026 AI Vision Multi-Agent Backend")
+app = FastAPI(title="World of Hyatt 2026 AI Vision Multi-Agent Backend")
 
 # Enable CORS for frontend
 app.add_middleware(

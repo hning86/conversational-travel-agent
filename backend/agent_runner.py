@@ -51,28 +51,28 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
     if detected_turn == 1:
         collector.log("ADK 2.0", f"Routing request to Hotels Agent to search romantic getaways from Amsterdam matching: Art, Fine Dining, Parking.")
         
-        # Query Vector Search for art + romantic + parking in Paris/Bruges
-        collector.log("Hotels Agent", "Invoking Vector Search for Paris & Bruges options matching 'boutique art hotel'.")
+        # Query Vector Search for art + romantic + parking in Paris/Brussels
+        collector.log("Hotels Agent", "Invoking Vector Search for Paris & Brussels options matching 'boutique art hotel'.")
         paris_results = vector_search.vector_search_hotels("Paris boutique art hotel fine-dining parking drive AMS", user_profile=profile)
-        bruges_results = vector_search.vector_search_hotels("Bruges historic art hotel parking drive AMS", user_profile=profile)
+        bruges_results = vector_search.vector_search_hotels("Brussels historic art hotel parking drive AMS", user_profile=profile)
         
         # Save state in Firestore
         session_state["current_turn"] = 1
-        session_state["city_options"] = ["Paris", "Bruges"]
+        session_state["city_options"] = ["Paris", "Brussels"]
         session_state["needs_parking"] = True
         firestore.save_session(session_id, session_state)
         
         response_text = (
             "A romantic getaway sounds great, Laura! Since you loved that boutique art hotel in Rome last year "
-            "(Hotel Raphael), I’m leaning towards Paris or Bruges for this trip. Both have great driving routes "
-            "from Amsterdam. Paris has world-class museums, while Bruges offers a quieter, historic vibe. Do either of those appeal?"
+            "(Hotel Raphael), I’m leaning towards Paris or Brussels for this trip. Both have great driving routes "
+            "from Amsterdam. Paris has world-class museums, while Brussels offers a quieter, historic vibe. Do either of those appeal?"
         )
         
         cards = [
             {
                 "type": "hotel_proposal",
                 "city": "Paris",
-                "name": "L'Hôtel Paris",
+                "name": "Park Hyatt Paris-Vendôme",
                 "rating": 4.9,
                 "reviews": 890,
                 "price": "€420/night",
@@ -89,8 +89,8 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
             },
             {
                 "type": "hotel_proposal",
-                "city": "Bruges",
-                "name": "Hotel Heritage - Relais & Châteaux",
+                "city": "Brussels",
+                "name": "Hotel Heritage (SLH Hyatt Partner)",
                 "rating": 4.8,
                 "reviews": 520,
                 "price": "€280/night",
@@ -98,7 +98,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                 "description": "Secluded medieval elegance, exquisite restaurant, private courtyard parking.",
                 "guest_review": "Felt like stepping into a romantic fairy tale. The private courtyard and fine art collection are breathtaking.",
                 "videos": [
-                    {"title": "Bruges Hidden Medieval Gems Vlog", "author": "Travel with Sam", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+                    {"title": "Brussels Hidden Medieval Gems Vlog", "author": "Travel with Sam", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
                 ],
                 "images": [
                     "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=400&q=80",
@@ -108,7 +108,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         ]
         
     elif detected_turn == 2:
-        collector.log("ADK 2.0", "Laura pivoted! Dropping Bruges/Paris sub-routines. Initializing London search workflow.")
+        collector.log("ADK 2.0", "Laura pivoted! Dropping Paris/Brussels sub-routines. Initializing London search workflow.")
         
         # Update Firestore
         session_state["current_turn"] = 2
@@ -130,7 +130,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         
         response_text = (
             "London it is! I've updated your trip. Since Buster is a larger dog, I skipped the hotels with strict weight limits. "
-            "I found three great pet-friendly options near your sister in Shoreditch. The Hoxton is my top pick for you—they "
+            "I found three great pet-friendly options near your sister in Shoreditch. Andaz London is my top pick for you—they "
             "have spacious ground-floor rooms and are right next to an off-leash park. Also, I see you usually prefer flying KLM; "
             "they have a direct flight on Friday evening that fits your usual schedule. Want to see the details?"
         )
@@ -138,10 +138,10 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         cards = [
             {
                 "type": "hotel_card",
-                "name": "The Hoxton, Shoreditch",
+                "name": "Andaz London Liverpool Street",
                 "rating": 9.2,
                 "reviews": 1240,
-                "badge": "Genius Level 3 Option",
+                "badge": "Globalist Option",
                 "price": "€270/night",
                 "tagline": "Dog-friendly ground floor rooms",
                 "details": [
@@ -151,7 +151,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                 ],
                 "guest_review": "Absolutely the best dog-friendly hotel in London! The ground-floor garden room was perfect for Buster and the staff treated him like royalty.",
                 "videos": [
-                    {"title": "The Hoxton Shoreditch Room Tour & Pet Review", "author": "BarkVloggers", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+                    {"title": "The Andaz London Liverpool Street Room Tour & Pet Review", "author": "BarkVloggers", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
                     {"title": "Exploring Shoreditch with a Golden Retriever", "author": "London Doggo Guide", "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
                 ],
                 "images": [
@@ -186,7 +186,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         
         response_text = (
             "Good question. Yes, you will need an Animal Health Certificate (AHC) issued within 10 days of your trip. "
-            "I've sent the UK government checklist to your email. Should we still lock in the Hoxton while you review that?"
+            "I've sent the UK government checklist to your email. Should we still lock in the Andaz while you review that?"
         )
         
         cards = [
@@ -201,12 +201,12 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
                     {"text": "Tapeworm treatment (1-5 days before entry, by vet)", "checked": False}
                 ],
                 "action_label": "Email Official Checklist PDF",
-                "email": "laura.v@genius-member.com"
+                "email": "laura.v@hyatt-member.com"
             }
         ]
         
     elif detected_turn == 4:
-        collector.log("ADK 2.0", "Spatial query received. Routing request to Mapping Agent to compute pedestrian route from The Hoxton to 18 Hoxton Square.")
+        collector.log("ADK 2.0", "Spatial query received. Routing request to Mapping Agent to compute pedestrian route from Andaz London to 18 Hoxton Square.")
         
         # Simulate Spatial calculation and log
         collector.log("Mapping Agent", "Invoking Google Map Grounding tool to retrieve real-time pedestrian walking paths and calculate precise travel times...")
@@ -220,7 +220,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         firestore.save_session(session_id, session_state)
         
         response_text = (
-            "Great news! The Hoxton, Shoreditch is very close to your sister's place at 18 Hoxton Square. "
+            "Great news! Andaz London Liverpool Street is very close to your sister's place at 18 Hoxton Square. "
             "It's a scenic 0.7-mile walk, which takes about 14 minutes. The entire route is along flat, dog-friendly "
             "pedestrian sidewalks, and you'll walk right past the green Hoxton Square park—perfect for a stroll with Buster! "
             "I've mapped it out for you below. Shall we go ahead and lock in your flight and hotel room?"
@@ -230,7 +230,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
             {
                 "type": "map_card",
                 "title": "Route to Sister's Flat",
-                "origin": "The Hoxton, Shoreditch",
+                "origin": "Andaz London Liverpool Street",
                 "destination": "18 Hoxton Square",
                 "distance": "0.7 miles",
                 "duration": "14 mins walk",
@@ -240,7 +240,7 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         
     elif detected_turn == 5:
         collector.log("ADK 2.0", "Resuming transaction flow. Pulling secure booking credentials from Secret Manager.")
-        api_key = secret_manager.get_secret("booking-api-key")
+        api_key = secret_manager.get_secret("hyatt-api-key")
         
         # Loyalty Discount Applied
         collector.log("ADK 2.0", f"Applying Customer Loyalty Logic: {profile['loyalty_status']} applies 15% discount.")
@@ -262,8 +262,8 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         collector.log("ADK 2.0", "Found 2 prime matching venues near Shoreditch high street.", payload=pubs)
         
         response_text = (
-            f"Done! I've reserved a room at the Hoxton, Shoreditch for June 12-14. I automatically applied your "
-            f"Genius Level 3 discount, saving you 15% (saved €{saved}!). I also added a note to the hotel requesting "
+            f"Done! I've reserved a room at the Andaz, Shoreditch for June 12-14. I automatically applied your "
+            f"Globalist discount, saving you 15% (saved €{saved}!). I also added a note to the hotel requesting "
             f"a dog bed for Buster. Since you mentioned loving good food, would you like me to find some "
             f"dog-friendly gastropubs near the hotel for Saturday night?"
         )
@@ -271,14 +271,14 @@ async def run_booking_agent(session_id: str, query: str) -> Dict[str, Any]:
         cards = [
             {
                 "type": "receipt_card",
-                "hotel": "The Hoxton, Shoreditch",
+                "hotel": "Andaz London Liverpool Street",
                 "dates": "June 12 - 14, 2026 (2 Nights)",
                 "room": "Double Standard Room (Ground Floor)",
                 "special_request": "Dog bed requested for Buster (Golden Retriever)",
                 "original_price": f"€{original_price}",
-                "discount": f"-€{saved} (Genius Level 3 15% Applied)",
+                "discount": f"-€{saved} (Globalist 15% Applied)",
                 "final_price": f"€{discounted_price}",
-                "status": "Confirmed & Guaranteed with Booking.com"
+                "status": "Confirmed & Guaranteed with World of Hyatt"
             },
             {
                 "type": "dining_card",

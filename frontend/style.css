@@ -2,23 +2,24 @@
    DESIGN SYSTEM & VARIABLES
    ========================================================================== */
 :root {
-    --booking-blue: #003580;
-    --booking-blue-light: #006CFF;
-    --booking-yellow: #FFB700;
-    --booking-dark: #001C42;
-    --success-green: #008009;
+    --hyatt-navy: #071D3A;
+    --hyatt-navy-light: #1F3D68;
+    --hyatt-gold: #C5A059;
+    --hyatt-gold-light: #E0C797;
+    --hyatt-dark: #050E1A;
+    --success-green: #2E7D32;
     --slate-50: #f8fafc;
     --slate-100: #f1f5f9;
     --slate-200: #e2e8f0;
     --slate-300: #cbd5e1;
     --slate-700: #334155;
     --slate-800: #1e293b;
-    --slate-900: #0f172a;
+    --slate-900: #0b1320;
     
     --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --shadow-premium: 0 10px 30px -10px rgba(0, 28, 66, 0.15);
-    --shadow-glow: 0 0 15px rgba(0, 108, 255, 0.5);
+    --shadow-premium: 0 10px 30px -10px rgba(7, 29, 58, 0.25);
+    --shadow-glow: 0 0 15px rgba(197, 160, 89, 0.4);
     --border-radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -66,19 +67,19 @@ body {
     align-items: center;
 }
 
-.booking-brand {
+.hyatt-brand {
     display: flex;
     align-items: center;
     font-size: 1.1rem;
     font-weight: 700;
 }
 
-.brand-booking {
+.brand-hyatt {
     color: white;
 }
 
-.brand-com {
-    color: var(--booking-blue-light);
+.brand-world {
+    color: var(--hyatt-gold);
 }
 
 .brand-divider {
@@ -138,14 +139,14 @@ body {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--booking-blue-light);
+    border: 2px solid var(--hyatt-gold);
 }
 
 .level-badge {
     position: absolute;
     bottom: -4px;
     right: -4px;
-    background-color: var(--booking-yellow);
+    background-color: var(--hyatt-gold);
     color: var(--slate-900);
     font-size: 0.65rem;
     font-weight: 700;
@@ -223,9 +224,9 @@ body {
 }
 
 .tab-btn.active {
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
     background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 2px solid var(--booking-yellow);
+    border-bottom: 2px solid var(--hyatt-gold);
 }
 
 .talk-track-content {
@@ -245,13 +246,13 @@ body {
 
 .track-pane h4 {
     font-size: 0.8rem;
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
     letter-spacing: 0.5px;
 }
 
 .speaker-text {
     background-color: rgba(15, 23, 42, 0.4);
-    border-left: 3px solid var(--booking-blue-light);
+    border-left: 3px solid var(--hyatt-gold);
     color: var(--slate-100);
     font-size: 0.8rem;
     line-height: 1.4;
@@ -260,7 +261,7 @@ body {
 }
 
 .btn-trigger {
-    background-color: var(--booking-blue-light);
+    background-color: var(--hyatt-gold);
     border: none;
     border-radius: 6px;
     color: white;
@@ -371,7 +372,7 @@ body {
    RIGHT PANE: CHAT COMPANION SPACE (DOT)
    ========================================================================== */
 .companion-pane {
-    background: radial-gradient(circle at top right, #001f4d 0%, #050a14 100%);
+    background: radial-gradient(circle at top right, var(--hyatt-navy-light) 0%, var(--hyatt-dark) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -400,7 +401,7 @@ body {
 
 /* Companion Top Header */
 .companion-top {
-    background-color: var(--booking-blue);
+    background-color: var(--hyatt-navy);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: space-between;
@@ -424,9 +425,9 @@ body {
 .avatar-circle {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, var(--booking-yellow) 0%, #ff8c00 100%);
+    background: linear-gradient(135deg, var(--hyatt-gold) 0%, #a27e3c 100%);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 183, 0, 0.4);
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
 }
 
 /* Subtly animated pulse indicator on Dot's avatar */
@@ -435,7 +436,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--booking-yellow);
+    background-color: var(--hyatt-gold);
     border-radius: 50%;
     z-index: -1;
     animation: avatarPulse 2s infinite ease-out;
@@ -453,7 +454,7 @@ body {
     width: 10px;
     height: 10px;
     background-color: #10b981;
-    border: 2px solid var(--booking-blue);
+    border: 2px solid var(--hyatt-navy);
     border-radius: 50%;
 }
 
@@ -531,7 +532,7 @@ body {
 }
 
 .dot .msg-bubble {
-    background-color: var(--booking-blue);
+    background-color: var(--hyatt-navy);
     color: white;
     border-bottom-left-radius: 4px;
     box-shadow: 0 4px 15px rgba(0, 53, 128, 0.2);
@@ -626,7 +627,7 @@ body {
     border-radius: 20px;
     font-size: 0.7rem;
     font-weight: 600;
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 .hotel-info-block {
@@ -650,7 +651,7 @@ body {
 .hotel-price {
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
     white-space: nowrap;
 }
 
@@ -664,7 +665,7 @@ body {
 }
 
 .score-num {
-    background-color: var(--booking-blue-light);
+    background-color: var(--hyatt-gold);
     color: white;
     font-weight: 700;
     font-size: 0.7rem;
@@ -689,7 +690,7 @@ body {
     margin-top: 10px;
     padding: 6px 10px;
     background-color: rgba(255, 255, 255, 0.03);
-    border-left: 2px solid var(--booking-yellow);
+    border-left: 2px solid var(--hyatt-gold);
     border-radius: 0 6px 6px 0;
     font-size: 0.75rem;
     font-style: italic;
@@ -811,7 +812,7 @@ body {
 
 .airline-badge {
     font-size: 0.75rem;
-    color: var(--booking-blue-light);
+    color: var(--hyatt-gold);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -941,7 +942,7 @@ body {
 
 .policy-item.highlight .policy-text {
     font-weight: 600;
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 .btn-card-action {
@@ -1016,7 +1017,7 @@ body {
     padding-top: 8px;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 /* 6. Dining Recommendations (Turn 4) */
@@ -1057,12 +1058,12 @@ body {
 }
 
 .pub-rating {
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 .pub-meta {
     font-size: 0.68rem;
-    color: var(--booking-blue-light);
+    color: var(--hyatt-gold);
     margin-bottom: 4px;
 }
 
@@ -1093,7 +1094,7 @@ body {
 
 .map-card-subtitle {
     font-size: 0.75rem;
-    color: var(--booking-blue-light);
+    color: var(--hyatt-gold);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -1145,7 +1146,7 @@ body {
 }
 
 .input-wrapper:focus-within {
-    border-color: var(--booking-blue-light);
+    border-color: var(--hyatt-gold);
     box-shadow: var(--shadow-glow);
 }
 
@@ -1166,7 +1167,7 @@ body {
 }
 
 .btn-send {
-    background-color: var(--booking-blue-light);
+    background-color: var(--hyatt-gold);
     border: none;
     border-radius: 8px;
     color: white;
@@ -1202,7 +1203,7 @@ body {
 }
 
 .github-link {
-    color: var(--booking-blue-light);
+    color: var(--hyatt-gold);
     text-decoration: none;
     font-weight: 600;
     display: inline-flex;
@@ -1273,7 +1274,7 @@ body {
 }
 
 .step-card.active {
-    border-color: var(--booking-blue-light);
+    border-color: var(--hyatt-gold);
     background-color: rgba(30, 41, 59, 0.75);
     box-shadow: 0 4px 20px rgba(0, 108, 255, 0.15);
 }
@@ -1305,7 +1306,7 @@ body {
 }
 
 .step-card.active .step-badge {
-    background-color: var(--booking-yellow);
+    background-color: var(--hyatt-gold);
     color: var(--slate-900);
 }
 
@@ -1319,7 +1320,7 @@ body {
 }
 
 .step-card.active .step-title {
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 .toggle-icon {
@@ -1330,7 +1331,7 @@ body {
 
 .step-card.active .toggle-icon {
     transform: rotate(180deg);
-    color: var(--booking-yellow);
+    color: var(--hyatt-gold);
 }
 
 .step-card-body {
@@ -1430,24 +1431,24 @@ body {
 
 /* Current active turn highlight (Glows beautifully!) */
 .step-card.current {
-    border-color: var(--booking-blue-light) !important;
+    border-color: var(--hyatt-gold) !important;
     background-color: rgba(30, 41, 59, 0.9) !important;
     box-shadow: 0 4px 25px rgba(0, 108, 255, 0.35) !important;
 }
 
 .step-card.current .step-badge {
-    background-color: var(--booking-yellow) !important;
+    background-color: var(--hyatt-gold) !important;
     color: var(--slate-900) !important;
     box-shadow: 0 0 10px rgba(255, 218, 0, 0.5);
 }
 
 .step-card.current .step-title {
-    color: var(--booking-yellow) !important;
+    color: var(--hyatt-gold) !important;
     font-weight: 700 !important;
 }
 
 .step-card.current .toggle-icon {
-    color: var(--booking-yellow) !important;
+    color: var(--hyatt-gold) !important;
 }
 
 
@@ -1621,11 +1622,11 @@ body {
     line-height: 1.4 !important;
 }
 
-.brand-booking {
+.brand-hyatt {
     font-size: 1.2rem !important;
 }
 
-.brand-com {
+.brand-world {
     font-size: 1.2rem !important;
 }
 
