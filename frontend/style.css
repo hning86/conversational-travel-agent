@@ -1644,5 +1644,206 @@ body {
     font-size: 0.85rem !important;
 }
 
+/* ==========================================================================
+   HYATT LIGHT THEME SPECIFIC OVERRIDES (GUEST APP MOBILE MOCKUP)
+   ========================================================================== */
+.mobile-frame {
+    background-color: #ffffff !important;
+    border: 1px solid #D6CFC4 !important;
+    box-shadow: 0 15px 45px rgba(5, 14, 26, 0.15) !important;
+}
+
+/* Header */
+.mobile-frame .companion-top {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #EAE5DB !important;
+}
+
+.mobile-frame .assistant-meta h4 {
+    color: var(--hyatt-navy) !important;
+}
+
+.mobile-frame .assistant-meta p {
+    color: var(--slate-700) !important;
+}
+
+.mobile-frame .trip-status {
+    background-color: #FAF8F5 !important;
+    color: var(--hyatt-navy) !important;
+    border: 1px solid #D6CFC4 !important;
+}
+
+.mobile-frame .active-dot {
+    border: 2px solid #ffffff !important;
+}
+
+/* Chat History Area */
+.mobile-frame .chat-history {
+    background-color: #FAF8F5 !important; /* Hyatt luxury warm cream */
+}
+
+/* User Messages: White with slate border and dark navy text */
+.mobile-frame .user .msg-bubble {
+    background-color: #ffffff !important;
+    border: 1px solid #D6CFC4 !important;
+    color: var(--hyatt-navy) !important;
+}
+
+/* Hya (Companion) Messages: Deep Hyatt Navy with white text */
+.mobile-frame .dot .msg-bubble {
+    background-color: var(--hyatt-navy) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(7, 29, 58, 0.12) !important;
+}
+
+/* Typing Indicator inside light frame */
+.mobile-frame .typing-dot {
+    background-color: var(--hyatt-gold) !important;
+}
+
+/* Input Footer */
+.mobile-frame .chat-input-bar {
+    background-color: #ffffff !important;
+    border-top: 1px solid #EAE5DB !important;
+}
+
+.mobile-frame .input-wrapper {
+    background-color: #FAF8F5 !important;
+    border: 1px solid #D6CFC4 !important;
+}
+
+.mobile-frame .input-wrapper:focus-within {
+    border-color: var(--hyatt-gold) !important;
+    box-shadow: var(--shadow-glow) !important;
+}
+
+.mobile-frame #chatInput {
+    color: var(--hyatt-navy) !important;
+}
+
+.mobile-frame #chatInput::placeholder {
+    color: #8A98A8 !important;
+}
+
+.mobile-frame .btn-send {
+    background-color: var(--hyatt-navy) !important;
+    color: #ffffff !important;
+}
+
+.mobile-frame .btn-send:hover {
+    background-color: var(--hyatt-gold) !important;
+}
+
+/* Watermark */
+.mobile-frame .co-branding-watermark {
+    background-color: #F0EAE1 !important;
+    border-top: 1px solid #EAE5DB !important;
+    color: var(--slate-700) !important;
+}
+
+.mobile-frame .co-branding-watermark a {
+    color: var(--hyatt-navy) !important;
+}
+
+.mobile-frame .co-branding-watermark a:hover {
+    color: var(--hyatt-gold) !important;
+}
+
+/* Custom Scrollbar inside light theme */
+.mobile-frame .chat-history::-webkit-scrollbar-thumb {
+    background: rgba(7, 29, 58, 0.15) !important;
+}
+
+/* Cards inside Hya's navy bubble */
+.mobile-frame .rich-hotel-card,
+.mobile-frame .london-detail-card,
+.mobile-frame .rich-flight-card,
+.mobile-frame .rich-policy-card,
+.mobile-frame .rich-receipt-card,
+.mobile-frame .rich-dining-card,
+.mobile-frame .rich-map-card {
+    background-color: #ffffff !important;
+    border: 1px solid #EAE5DB !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    color: var(--hyatt-navy) !important;
+}
+
+/* Card Typography Overrides */
+.mobile-frame .rich-hotel-card h5,
+.mobile-frame .london-detail-card h5,
+.mobile-frame .policy-card-title,
+.mobile-frame .receipt-title,
+.mobile-frame .dining-title,
+.mobile-frame .map-card-title {
+    color: var(--hyatt-navy) !important;
+}
+
+.mobile-frame .hotel-desc,
+.mobile-frame .hotel-review-score,
+.mobile-frame .details-list,
+.mobile-frame .detail-bullet,
+.mobile-frame .policy-text,
+.mobile-frame .receipt-row,
+.mobile-frame .pub-desc,
+.mobile-frame .pub-meta,
+.mobile-frame .map-bullet {
+    color: var(--slate-700) !important;
+}
+
+.mobile-frame .hotel-tagline {
+    color: var(--hyatt-gold) !important;
+}
+
+.mobile-frame .hotel-review-quote {
+    background-color: #F7F5F0 !important;
+    border-left: 2px solid var(--hyatt-gold) !important;
+    color: var(--slate-700) !important;
+}
+
+/* Flight Card */
+.mobile-frame .rich-flight-card .airport-code,
+.mobile-frame .rich-flight-card .airport-time {
+    color: var(--hyatt-navy) !important;
+}
+
+.mobile-frame .rich-flight-card .flight-duration,
+.mobile-frame .rich-flight-card .flight-meta-details {
+    color: var(--slate-700) !important;
+}
+
+/* Policy Card */
+.mobile-frame .rich-policy-card .policy-item {
+    color: var(--slate-700) !important;
+}
+.mobile-frame .rich-policy-card .policy-item.checked {
+    color: var(--success-green) !important;
+}
+.mobile-frame .rich-policy-card .policy-item.highlight {
+    background-color: rgba(197, 160, 89, 0.08) !important;
+    border-left-color: var(--hyatt-gold) !important;
+}
+
+/* Map Card */
+.mobile-frame .rich-map-card .map-svg {
+    border: 1px solid #E2E8F0 !important;
+}
+
+/* Receipt Card */
+.mobile-frame .rich-receipt-card .receipt-row.total {
+    border-top: 1px solid #E2E8F0 !important;
+    color: var(--slate-700) !important;
+}
+
+/* Buttons in Cards */
+.mobile-frame .btn-card-action {
+    background-color: var(--hyatt-navy) !important;
+    color: #ffffff !important;
+}
+
+.mobile-frame .btn-card-action:hover {
+    background-color: var(--hyatt-gold) !important;
+}
+
+
 
 
