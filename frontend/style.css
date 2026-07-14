@@ -462,10 +462,10 @@ body {
 
 .active-dot {
     position: absolute;
-    bottom: -1px;
-    right: -1px;
-    width: 12px;
-    height: 12px;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
     background-color: #10b981;
     border: 2px solid var(--hyatt-navy);
     border-radius: 50%;
