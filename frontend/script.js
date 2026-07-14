@@ -418,7 +418,7 @@ function generateCardHtml(card) {
                         </div>
                     `).join('')}
                 </div>
-                <button class="btn-card-action" onclick="alert('AHC Checklist PDF sent to ${card.email}!')">
+                <button class="btn-card-action" onclick="showToast('Checklist PDF sent to ${card.email}!')">
                     📧 ${card.action_label}
                 </button>
             `;
@@ -654,6 +654,25 @@ function escapeHtml(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+let toastTimeoutId = null;
+function showToast(message) {
+    const toast = document.getElementById("toastNotification");
+    const toastMsg = document.getElementById("toastMessage");
+    if (!toast || !toastMsg) return;
+    
+    toastMsg.textContent = message;
+    toast.classList.remove("hidden");
+    
+    if (toastTimeoutId) {
+        clearTimeout(toastTimeoutId);
+    }
+    
+    toastTimeoutId = setTimeout(() => {
+        toast.classList.add("hidden");
+        toastTimeoutId = null;
+    }, 3000);
 }
 
 

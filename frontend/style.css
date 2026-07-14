@@ -1867,3 +1867,42 @@ body {
 .mobile-frame .btn-card-action:hover {
     background-color: var(--hyatt-navy) !important;
 }
+
+/* Toast Notification (Custom premium alternative to native alert) */
+.toast-notification {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: var(--hyatt-navy);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(12, 35, 64, 0.25);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toast-notification.hidden {
+    opacity: 0;
+    transform: translate(-50%, -15px);
+    pointer-events: none;
+}
+
+.toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hyatt-blue);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.65rem;
+}
