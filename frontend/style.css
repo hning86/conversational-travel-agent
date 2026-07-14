@@ -462,10 +462,10 @@ body {
 
 .active-dot {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 10px;
-    height: 10px;
+    bottom: -1px;
+    right: -1px;
+    width: 12px;
+    height: 12px;
     background-color: #10b981;
     border: 2px solid var(--hyatt-navy);
     border-radius: 50%;
@@ -1677,6 +1677,13 @@ body {
     border: 1px solid #CBDCEB !important;
 }
 
+.mobile-frame .avatar-circle {
+    background: #ffffff !important;
+    border: 2px solid var(--hyatt-blue) !important;
+    color: var(--hyatt-navy) !important;
+    box-shadow: 0 2px 8px rgba(0, 75, 135, 0.1) !important;
+}
+
 .mobile-frame .active-dot {
     border: 2px solid #ffffff !important;
 }
@@ -1770,7 +1777,7 @@ body {
 .mobile-frame .rich-receipt-card,
 .mobile-frame .rich-dining-card,
 .mobile-frame .rich-map-card {
-    background-color: #ffffff !important;
+    background: #ffffff !important;
     border: 1px solid #E2E8F0 !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
     color: var(--hyatt-navy) !important;
@@ -1809,6 +1816,15 @@ body {
 }
 
 /* Flight Card */
+.mobile-frame .rich-flight-card {
+    border: 1px dashed #CBD5E0 !important;
+}
+
+.mobile-frame .rich-flight-card::before,
+.mobile-frame .rich-flight-card::after {
+    background-color: #FAFBFD !important;
+}
+
 .mobile-frame .rich-flight-card .airport-code,
 .mobile-frame .rich-flight-card .airport-time {
     color: var(--hyatt-navy) !important;
