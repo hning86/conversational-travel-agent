@@ -425,9 +425,18 @@ body {
 .avatar-circle {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, var(--hyatt-gold) 0%, #a27e3c 100%);
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(197, 160, 89, 0.4);
+    background: var(--hyatt-navy);
+    border: 2px solid var(--hyatt-gold);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
+    color: var(--hyatt-gold);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 /* Subtly animated pulse indicator on Dot's avatar */
@@ -437,7 +446,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: var(--hyatt-gold);
-    border-radius: 50%;
+    border-radius: 8px;
     z-index: -1;
     animation: avatarPulse 2s infinite ease-out;
 }

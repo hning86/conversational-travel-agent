@@ -1,8 +1,8 @@
-# Booking.com AI Travel Companion — 2026 Vision Platform
+# World of Hyatt AI Travel Companion — 2026 Vision Platform
 
-A fully interactive multi-agent travel planning simulation utilizing the **Google Agent Development Kit (ADK 2.0)** and **FastAPI**. This prototype demonstrates the next-generation conversational capabilities of **Dot**, the Booking.com conversational companion, seamlessly orchestrating specialized sub-agents to fulfill rich, contextual customer itineraries while integrating mock GCP databases.
+A fully interactive multi-agent travel planning simulation utilizing the **Google Agent Development Kit (ADK 2.0)** and **FastAPI**. This prototype demonstrates the next-generation conversational capabilities of **Hya**, the World of Hyatt conversational companion, seamlessly orchestrating specialized sub-agents to fulfill rich, contextual customer itineraries while integrating mock GCP databases.
 
-![Booking.com 2026 AI Vision Demo Screenshot](images/travel_agent_screenshot.png)
+![World of Hyatt 2026 AI Vision Demo Screenshot](images/travel_agent_screenshot.png)
 
 ---
 
@@ -19,10 +19,10 @@ graph TD
         AppAPI <-->|Invokes| Runner[🏃‍♂️ Agent Runner: agent_runner.py]
     end
     
-    subgraph travel_agent [Dot Travel Assistant]
+    subgraph travel_agent [Hya Travel Assistant]
         direction TB
         Workflow[🧩 ADK 2.0 Workflow]
-        Dot[🤖 Orchestrator: 'Dot' router_agent]
+        Hya[🤖 Orchestrator: 'Hya' router_agent]
         
         subgraph Agents [Specialized Agents]
             Hotels[🏨 Hotels Specialist hotels_agent]
@@ -131,7 +131,7 @@ You can serve the `frontend` directory using a simple local server. For example,
 npx -y serve -p 3000 .
 ```
 
-Open your browser and navigate to `http://localhost:3000` to interact with **Dot**.
+Open your browser and navigate to `http://localhost:3000` to interact with **Hya**.
 
 ### 4. Cloud Run Deployment & Private Access
 
@@ -153,8 +153,8 @@ gcloud run services proxy booking-companion-demo --region=us-central1 --port=808
 
 ## 🧬 Core Multi-Agent Roles
 
-### 1. **Dot Orchestrator (`router_agent`)**
-The premier Booking.com companion responsible for analyzing incoming messages, managing state transitions, and orchestrating downstream routing to specialized sub-agents.
+### 1. **Hya Orchestrator (`router_agent`)**
+The premier World of Hyatt companion responsible for analyzing incoming messages, managing state transitions, and orchestrating downstream routing to specialized sub-agents.
 
 ### 2. **Hotels Specialist (`hotels_agent`)**
 *   **Tools Equipped:** `lookup_user_preferences`, `search_hotels`

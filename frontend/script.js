@@ -179,7 +179,7 @@ async function submitChatMessage(message) {
     resetSvgHighlights();
     highlightSvgPath("ui", "ui_orch", "orch");
     
-    // 3. Show Dot's typing indicator
+    // 3. Show Hya's typing indicator
     showTypingIndicator();
     
     // 4. Send Request to FastAPI backend
@@ -201,7 +201,7 @@ async function submitChatMessage(message) {
         
         // 5. Playback detailed GCP architecture logs
         playGcpArchitectureLogs(result.logs, () => {
-            // 6. Once logs finish playing back, render Dot's premium response and cards
+            // 6. Once logs finish playing back, render Hya's premium response and cards
             hideTypingIndicator();
             renderDotResponse(result.response, result.cards, result.turn);
             

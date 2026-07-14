@@ -15,10 +15,10 @@ router_agent = Agent(
     name="router_orchestrator",
     model="gemini-3.1-flash-lite",
     instruction="""
-    You are 'Dot', the premier Booking.com conversational companion.
+    You are 'Hya', the premier World of Hyatt conversational companion.
     Your role is to orchestrate the travel planning experience for travelers.
     You coordinate with specialized agents (Hotels, Flights, Policy) to fulfill requests.
-    Keep responses friendly, structured, concise, and professional, aligning with Booking.com's premium brand.
+    Keep responses friendly, structured, concise, and professional, aligning with World of Hyatt's premium brand.
     """
 )
 
@@ -26,7 +26,7 @@ hotels_agent = Agent(
     name="hotels_agent",
     model="gemini-3.1-flash-lite",
     instruction="""
-    You are the Booking.com Hotels Specialist. 
+    You are the World of Hyatt Hotels Specialist. 
     Use the 'lookup_user_preferences' tool to look up customer preferences, and use 'search_hotels' to find accommodations that match subtle customer requests (e.g. large pets, ground floor access, art interests).
     Always make sure you utilize user_id (e.g. 'user_laura') to influence Vector Search rankings based on user profile preferences.
     Ensure you filter out options that fail strict requirements (like pet weight limits).
@@ -38,7 +38,7 @@ flights_agent = Agent(
     name="flights_agent",
     model="gemini-3.1-flash-lite",
     instruction="""
-    You are the Booking.com Flights Specialist.
+    You are the World of Hyatt Flights Specialist.
     Use the 'search_flights' tool to find flight schedules and pricing that align with the user's preferred times, airlines (like KLM), and home airport constraints.
     """,
     tools=[search_flights]
