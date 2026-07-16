@@ -163,7 +163,7 @@
     <!-- Walking footprint dots -->
     <path d="M 65 165 L 85 130 L 180 130 L 180 100 L 300 100 L 300 60" fill="none" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="2,6" stroke-linecap="round" stroke-linejoin="round" />
     
-    <!-- GOOGLE MAPS TEARDROP PIN 1: The Hoxton (Hotel Blue) -->
+    <!-- GOOGLE MAPS TEARDROP PIN 1: Andaz London (Hotel Blue) -->
     <circle cx="65" cy="165" r="12" fill="none" stroke="#1a73e8" stroke-width="1.5" opacity="0.3" />
     <ellipse cx="65" cy="165" rx="4" ry="1.5" fill="rgba(0,0,0,0.15)" />
     <!-- Teardrop Path -->
@@ -172,8 +172,8 @@
     <circle cx="65" cy="148" r="4" fill="#1a73e8" />
     <text x="65" y="151" text-anchor="middle" fill="#ffffff" font-size="6.5" font-weight="bold">🛏️</text>
     <!-- Floating label card -->
-    <rect x="13" y="120" width="104" height="14" rx="3" fill="#1a73e8" />
-    <text x="65" y="130" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold" font-family="Outfit">The Hoxton, Shoreditch</text>
+    <rect x="8" y="120" width="114" height="14" rx="3" fill="#1a73e8" />
+    <text x="65" y="130" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="bold" font-family="Outfit">Andaz London Liverpool St</text>
     
     <!-- GOOGLE MAPS TEARDROP PIN 2: Sister's Flat (Home Red) -->
     <circle cx="300" cy="60" r="12" fill="none" stroke="#ea4335" stroke-width="1.5" opacity="0.3" />

@@ -22,8 +22,8 @@ const SCENARIO_PRESETS = {
     1: "I'm looking for a romantic weekend getaway driving from Amsterdam",
     2: "Actually, my sister in London just had a baby, so I want to go to London instead. No car, and I'll fly. Oh, and I'm bringing Buster (my Golden Retriever)!",
     3: "Wait, do I need any special passport or vaccine papers for Buster to enter the UK now that Brexit happened?",
-    4: "How far is the Hoxton Shoreditch from my sister's place at 18 Hoxton Square? Can Buster and I easily walk there?",
-    5: "That's perfect. Let's book the flight and lock in the double standard room at the Hoxton!"
+    4: "How far is Andaz London Liverpool Street from my sister's place at 18 Hoxton Square? Can Buster and I easily walk there?",
+    5: "That's perfect. Let's book the flight and lock in the double standard room at Andaz London Liverpool Street!"
 };
 
 // SVG element mapping (Monitor panel removed, stubbed safely to prevent errors)
